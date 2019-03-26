@@ -1,0 +1,37 @@
+{
+  "name": "aov_wallpaper_generator",
+  "version": "1.0.0",
+  "description": "a simple tool to make cool aov HD wallpaper only with browser",
+  "main": "index.js",
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "gasparesganga-jquery-loading-overlay": "^2.1.6",
+    "jquery": "^2.2.4",
+    "konva": "^3.2.3",
+    "popper.js": "^1.14.7"
+  },
+  "devDependencies": {
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.3.0"
+  },
+  "scripts": {
+    "build": "webpack --mode=production",
+    "dev": "webpack --watch --mode=development",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/harimayco/harimayco.github.io.git"
+  },
+  "keywords": [
+    "aov",
+    "wallpaper",
+    "generator"
+  ],
+  "author": "Rendy Harimayco",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/harimayco/harimayco.github.io/issues"
+  },
+  "homepage": "https://github.com/harimayco/harimayco.github.io#readme"
+}
