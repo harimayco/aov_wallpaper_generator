@@ -76,8 +76,8 @@ const wp_data = [{
     "name": "zanis",
     "value": "zanis",
     "tag": "warrior",
-    "skinsCount": 5,
-    "bgCount": 5
+    "skinsCount": 6,
+    "bgCount": 6
 }, {
     "name": "valhein",
     "value": "valhein",
@@ -352,8 +352,8 @@ const wp_data = [{
     "name": "tulen",
     "value": "tulun",
     "tag": "mage",
-    "skinsCount": 5,
-    "bgCount": 5
+    "skinsCount": 6,
+    "bgCount": 6
 }, {
     "name": "lindis",
     "value": "lindi",
@@ -370,8 +370,8 @@ const wp_data = [{
     "name": "omen",
     "value": "yecha",
     "tag": "warrior",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "max",
     "value": "maikesi",
@@ -424,8 +424,8 @@ const wp_data = [{
     "name": "emily",
     "value": "aimili",
     "tag": "warrior",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "annete",
     "value": "annaite",
