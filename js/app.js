@@ -22,8 +22,8 @@ const wp_data = [{
     "name": "zephys",
     "value": "zephys",
     "tag": "warrior",
-    "skinsCount": 4,
-    "bgCount": 4
+    "skinsCount": 5,
+    "bgCount": 5
 }, {
     "name": "veera",
     "value": "veera",
@@ -244,8 +244,8 @@ const wp_data = [{
     "name": "airi",
     "value": "airi",
     "tag": "warrior",
-    "skinsCount": 6,
-    "bgCount": 6
+    "skinsCount": 7,
+    "bgCount": 7
 }, {
     "name": "batman",
     "value": "batman",
@@ -268,8 +268,8 @@ const wp_data = [{
     "name": "zuka",
     "value": "zuka",
     "tag": "warrior",
-    "skinsCount": 5,
-    "bgCount": 5
+    "skinsCount": 6,
+    "bgCount": 6
 }, {
     "name": "murad",
     "value": "murad",
@@ -280,8 +280,8 @@ const wp_data = [{
     "name": "telannas",
     "value": "telannas",
     "tag": "archer",
-    "skinsCount": 5,
-    "bgCount": 5
+    "skinsCount": 6,
+    "bgCount": 6
 }, {
     "name": "Zill",
     "value": "qier",
@@ -316,14 +316,14 @@ const wp_data = [{
     "name": "xeniel",
     "value": "xeniel",
     "tag": "tank",
-    "skinsCount": 3,
-    "bgCount": 3
+    "skinsCount": 5,
+    "bgCount": 5
 }, {
     "name": "arduin",
     "value": "arduin",
     "tag": "warrior",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "Ryoma",
     "value": "longma",
@@ -358,8 +358,8 @@ const wp_data = [{
     "name": "lindis",
     "value": "lindi",
     "tag": "archer",
-    "skinsCount": 3,
-    "bgCount": 3
+    "skinsCount": 5,
+    "bgCount": 5
 }, {
     "name": "timi",
     "value": "timi",
@@ -394,8 +394,8 @@ const wp_data = [{
     "name": "arum",
     "value": "airui",
     "tag": "tank",
-    "skinsCount": 3,
-    "bgCount": 3
+    "skinsCount": 4,
+    "bgCount": 4
 }, {
     "name": "rourke",
     "value": "luoke",
@@ -406,8 +406,8 @@ const wp_data = [{
     "name": "roxie",
     "value": "nuokexi",
     "tag": "warrior",
-    "skinsCount": 3,
-    "bgCount": 3
+    "skinsCount": 4,
+    "bgCount": 4
 }, {
     "name": "baldum",
     "value": "bodun",
@@ -448,8 +448,8 @@ const wp_data = [{
     "name": "richter/Riktor",
     "value": "ruike",
     "tag": "warrior",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "Sephera",
     "value": "lan",
@@ -460,8 +460,8 @@ const wp_data = [{
     "name": "quillen",
     "value": "kuilun",
     "tag": "assassin",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "Darcy",
     "value": "daerxi",
@@ -497,7 +497,14 @@ const wp_data = [{
     "value":"foluolun",
     "tag":"warrior",
     "skinsCount":2,
-    "bgCount":2}
+    "bgCount":2
+},{
+    "name": "Yena",
+    "value": "yena",
+    "tag": "warrior",
+    "skinsCount":2,
+    "bgCount":2
+}
 ];
 const fonts = ["Staatliches","Lilita One","Germania One","ZCOOL XiaoWei","Baloo Chettan","Arimo","Assistant","Libre Barcode 39","Noto Serif","Margarine","Saira Extra Condensed","Mrs Sheppards","Sree Krushnadevaraya","Encode Sans Expanded","Italiana","Iceberg","Sniglet","Bai Jamjuree","Miss Fajardose","Pavanam","Noto Sans SC","Scope One","Gothic A1","BioRhyme Expanded","Noto Sans","Lalezar","Kumar One","Heebo","Sunflower","Noto Serif TC","Markazi Text","Patrick Hand","Flavors","Dokdo","Aleo","Over the Rainbow","Lovers Quarrel","B612 Mono","Playball","Galada","Unkempt","Allerta Stencil","Mukta Malar","Spicy Rice","Ruge Boogie","Khula","Srisakdi","Mogra","Faustina","Tauri","Mouse Memoirs","Molengo","Halant","Esteban","Combo","Fresca","IBM Plex Sans Condensed","Electrolize","Sumana","Mallanna","Do Hyeon","Secular One","Charm","Angkor","Lakki Reddy","KoHo","Sarala","Nova Slim","Black And White Picture","Black Han Sans","Major Mono Display","Suravaram","Astloch","Overpass Mono","Miltonian Tattoo","Gilda Display","Armata","Butterfly Kids","Gugi","Bevan","M PLUS 1p","Barlow Condensed","Give You Glory","Dekko","Abhaya Libre","Annie Use Your Telescope","Balthazar","Alfa Slab One","B612","Love Ya Like A Sister","Bungee","Lemonada","Kosugi","Miriam Libre","Kodchasan","Archivo","Pridi","Rhodium Libre","Nanum Pen Script","Smythe","Fugaz One","Taprom","Knewave","Stylish","Lateef","Galindo","Delius","Diplomata SC","Source Code Pro","Fira Sans Condensed","Tajawal","Candal","Bigelow Rules","Six Caps","Mrs Saint Delafield","Yeon Sung","Thasadith","Amarante","Alike","Chewy","Mr De Haviland","Fasthand","Unna","Reenie Beanie","Noto Sans TC","Redressed","Butcherman","Press Start 2P","Almendra Display","Macondo","Ropa Sans","Rubik","Cute Font","Smokum","Stint Ultra Expanded","Aldrich","Clicker Script","Rajdhani","IBM Plex Sans","Italianno","Nunito Sans","Miniver","Antic Didone","Asset","Purple Purse","Euphoria Script","Mitr","Caesar Dressing","Rum Raisin","Play","Noto Serif JP","Graduate","Cabin Condensed","Varela","Slabo 27px","Nanum Gothic","Nanum Myeongjo","Poly","El Messiri","Space Mono","Kreon","Ramaraja","Seymour One","Sahitya","Bilbo Swash Caps","Almendra","Dorsa","Prosto One","Jockey One","IM Fell Great Primer","Iceland","Brawler","Changa","Donegal One","Jacques Francois Shadow","Quintessential","Bowlby One","Covered By Your Grace","Ruthie","Caudex","Scada","Rye","Chelsea Market","Libre Barcode 128","Syncopate","Duru Sans","Oxygen Mono","Unlock","Jolly Lodger","Zilla Slab Highlight","Vollkorn SC","Overlock SC","IM Fell Great Primer SC","Orbitron","Catamaran","Alegreya Sans SC","Alegreya SC","Encode Sans Semi Expanded","UnifrakturCook","Architects Daughter","Mandali","Sintony","Megrim","Ramabhadra","Poor Story","Barlow","Cambay","Kite One","Caveat","Croissant One","Baloo Bhai","Didact Gothic","Pirata One","Engagement","Itim","Fenix","Quantico","Norican","Rosario","Montez","Cardo","Delius Swash Caps","Nova Flat","Montserrat Alternates","Mukta Mahee","Miltonian","Arvo","Qwigley","Gamja Flower","Patrick Hand SC","Fredericka the Great","Metal Mania","Kanit","Suez One","Belgrano","Vidaloka","Rufina","Saira Condensed","Kavivanar","Cantarell","Gentium Book Basic","Noto Serif KR","Cambo","Uncial Antiqua","Pragati Narrow","Peralta","Asul","Athiti","Anton","Jua","Eczar","Prompt","Nanum Brush Script","Geostar Fill","Englebert","Audiowide","Mukta","Chivo","Encode Sans","Nunito","Amaranth","Ravi Prakash","Swanky and Moo Moo","Inknut Antiqua","Libre Barcode 39 Text","Vampiro One","Londrina Shadow","Princess Sofia","Varela Round","Sirin Stencil","Cedarville Cursive","Libre Barcode 39 Extended Text","Bad Script","Cormorant Unicase","Allura","Radley","Noto Sans JP","Petrona","Creepster","Simonetta","Chakra Petch","Ruda","Lobster Two","Ubuntu Condensed","Passero One","Pattaya","Geostar","Farsan","Lekton","Hind Siliguri","Fascinate Inline","Krona One","Glass Antiqua","Kurale","Noto Sans KR","Montserrat Subrayada","Palanquin","Keania One","Oleo Script","Saira","Voces","Federo","Kosugi Maru","Fira Mono","Holtwood One SC","Pathway Gothic One","Vast Shadow","Berkshire Swash","Martel Sans","Montserrat","Original Surfer","Open Sans Condensed","Cutive Mono","Actor","Kranky","Mountains of Christmas","Sancreek","Text Me One","Oxygen","Bungee Shade","Hanalei","Buenard","Adamina","Ribeye","Scheherazade","Asap","PT Serif Caption","Kaushan Script","Biryani","Teko","Sedgwick Ave Display","Nobile","Rouge Script","Sawarabi Gothic","Noticia Text","Spinnaker","David Libre","Crushed","Merriweather","Autour One","Sacramento","Modak","Nanum Gothic Coding","League Script","Basic","Inder","Merriweather Sans","La Belle Aurore","Roboto Slab","Permanent Marker","Sawarabi Mincho","Barrio","Elsie Swash Caps","Hind","Marcellus","Rancho","Quattrocento","Nova Cut","Coming Soon","Great Vibes","Raleway","Krub","Alef","Metrophobic","Jacques Francois","Cormorant Garamond","The Girl Next Door","Noto Serif SC","Fjord One","Mystery Quest","Suranna","Rasa","Parisienne","Libre Baskerville","Fruktur","Kotta One","Judson","IM Fell DW Pica SC","Oswald","Source Serif Pro","Poppins","Aubrey","Amiri","Trirong","Fontdiner Swanky","Revalia","Cuprum","Philosopher","Taviraj","Barlow Semi Condensed","Work Sans","Kalam","Lora","Baloo","Julius Sans One","Yanone Kaffeesatz","Henny Penny","Ruluko","Emilys Candy","Bitter","Hammersmith One","Spectral SC","Caveat Brush","Francois One","Cinzel Decorative","Cantata One","Sevillana","Aladin","Chango","Imprima","Linden Hill","Merienda One","Fira Sans","Vibur","Allan","Cherry Cream Soda","Source Sans Pro","Marko One","Open Sans","News Cycle","Calligraffitti","Enriqueta","Days One","Dynalight","Rubik Mono One","Tinos","Amatic SC","Volkhov","IM Fell Double Pica SC","Arbutus","Average","Ubuntu","Kenia","Oleo Script Swash Caps","Exo 2","Nothing You Could Do","Arapey","Sofia","Trochut","Josefin Sans","Dancing Script","Cabin","Gidugu","Mukta Vaani","Courgette","Roboto Condensed","Prata","Marcellus SC","Squada One","Trocchi","Crimson Text","Numans","Paytone One","Old Standard TT","Maven Pro","Quicksand","IM Fell French Canon SC","Monda","Kristi","IM Fell DW Pica","Mako","Mina","Happy Monkey","Goudy Bookletter 1911","Allerta","Sarina","Cabin Sketch","Homemade Apple","Gaegu","Tillana","Titillium Web","Codystar","Average Sans","Denk One","Inconsolata","Rationale","Kavoon","Faster One","PT Serif","Lily Script One","Sarpanch","Unica One","Cutive","Palanquin Dark","Petit Formal Script","Snowburst One","Rakkas","Playfair Display","Damion","Dosis","Crete Round","Signika","Devonshire","Junge","Monsieur La Doulaise","Buda","Doppio One","Sonsie One","Arizonia","Nixie One","Fjalla One","Yrsa","Indie Flower","Antic Slab","Questrial","Quattrocento Sans","Yellowtail","Habibi","Khand","Lobster","Lato","Sorts Mill Goudy","Cairo","Sarabun","Comfortaa","Averia Gruesa Libre","Fauna One","McLaren","Neuton","Reem Kufi","Carrois Gothic SC","Vollkorn","Bangers","Pangolin","UnifrakturMaguntia","Paprika","Satisfy","Dawning of a New Day","Harmattan","Sanchez","Shadows Into Light","Lancelot","Cookie","Federant","Kirang Haerang","PT Mono","Poiret One","Finger Paint","Economica","Just Me Again Down Here","Bubblegum Sans","Pacifico","Flamenco","GFS Neohellenic","Share Tech Mono","Ewert","Carrois Gothic","Stalemate","Cormorant Infant","Risque","Signika Negative","Share","Aguafina Script","Dhurjati","Lemon","Piedra","Abril Fatface","Roboto","Grand Hotel","IM Fell English","Akronim","Racing Sans One","Leckerli One","Changa One","Stint Ultra Condensed","Averia Sans Libre","Cousine","Bigshot One","Acme","VT323","Gudea","Overpass","Amiko","Nova Round","IBM Plex Serif","IM Fell Double Pica","Metamorphous","Abel","Zeyada","Freckle Face","Meddon","Pinyon Script","Lustria","Yesteryear","Cagliostro","IM Fell French Canon","Andika","Belleza","Waiting for the Sunrise","Muli","Artifika","Expletus Sans","Russo One","Michroma","Yeseva One","Trade Winds","Josefin Slab","Rambla","Maitree","PT Sans Caption","Telex","Arbutus Slab","Kameron","Chela One","GFS Didot","Bree Serif","Archivo Black","Spectral","Ranchers","Alike Angular","Karla","Charmonman","Libre Franklin","Monoton","Fondamento","Alegreya","Just Another Hand","Walter Turncoat","Bayon","Nova Mono","Loved by the King","Coda Caption","Gravitas One","Slackey","Geo","Pompiere","Mr Bedfort","Oldenburg","Schoolbell","Mali","Archivo Narrow","Katibeh","Playfair Display SC","Gabriela","Galdeano","Hanuman","Wendy One","Sue Ellen Francisco","Gloria Hallelujah","Erica One","Fanwood Text","Emblema One","Black Ops One","Magra","Nova Oval","Fira Sans Extra Condensed","Anonymous Pro","Libre Barcode 39 Extended","Righteous","Odor Mean Chey","Seaweed Script","Domine","Patua One","Marmelad","Sofadi One","Sura","Hind Vadodara","Sigmar One","Coustard","Short Stack","Peddana","Goblin One","Alex Brush","Della Respira","Amita","Hi Melody","Herr Von Muellerhoff","Wallpoet","Londrina Outline","Dr Sugiyama","Wire One","Yatra One","Ultra","Niconne","Oregano","Offside","Eagle Lake","Podkova","Pontano Sans","Neucha","Overlock","EB Garamond","PT Sans","Ledger","Oranienbaum","Spirax","Hanalei Fill","Headland One","Kumar One Outline","Cantora One","Wellfleet","Mr Dafoe","BenchNine","Mada","Milonga","Martel","Snippet","Freehand","Shojumaru","Salsa","MedievalSharp","Karma","Cinzel","Joti One","New Rocker","BioRhyme","Marvel","Sail","Forum","Montaga","Trykker","Concert One","Eater","Ceviche One","Mate","Glegoo","Irish Grover","Cormorant","Bentham","PT Sans Narrow","Rokkitt","Sunshiney","Moulpali","Advent Pro","Tangerine","Shanti","Alice","Asar","Arsenal","Bellefair","Capriola","Stardos Stencil","Homenaje","Slabo 13px","Tenor Sans","Meera Inimai","Passion One","Baloo Tammudu","Tienne","Mate SC","Baloo Bhaina","Notable","Kelly Slab","Fredoka One","Baloo Thambi","Boogaloo","Meie Script","Viga","Carme","Baloo Da","Bubbler One","Gentium Basic","Crafty Girls","Frijole","Strait","M PLUS Rounded 1c","Saira Semi Condensed","Romanesco","Cormorant SC","Sansita","Londrina Sketch","Skranji","Raleway Dots","Roboto Mono","Quando","Inika","Sriracha","Averia Serif Libre","Alegreya Sans","Nosifer","Prociono","Atma","ABeeZee","Stalinist One","Almendra SC","Ribeye Marrow","Carter One","Life Savers","Limelight","Rammetto One","Atomic Age","Kdam Thmor","Orienta","Monofett","Port Lligat Slab","Rock Salt","Lusitana","Julee","Copse","Vesper Libre","Share Tech","Mirza","Special Elite","Chau Philomene One","Battambang","Arima Madurai","Macondo Swash Caps","Manuale","Gafata","Handlee","Merienda","Gurajada","Tulpen One","Andada","Chonburi","Chathura","Tenali Ramakrishna","Preahvihear","Bowlby One SC","Maiden Orange","Bahiana","Titan One","Rosarivo","Fascinate","Felipa","Ovo","Fahkwang","Jaldi","Plaster","Exo","Yantramanav","Timmana","Suwannaphum","Gorditas","Nokora","Cherry Swash","Jim Nightshade","Averia Libre","Bonbon","Bungee Inline","Luckiest Guy","Khmer","Content","Marck Script","Delius Unicase","Warnes","Antic","Port Lligat Sans","Bungee Hairline","Griffy","Song Myung","Gochi Hand","Nova Script","Nova Square","Siemreap","Diplomata","Poller One","Baloo Paaji","ZCOOL QingKe HuangYou","Bungee Outline","Condiment","East Sea Dokdo","Amethysta","Baloo Tamma","Gruppo","Hind Madurai","Baumans","Libre Barcode 128 Text","Anaheim","Kantumruy","Modern Antiqua","Metal","Shadows Into Light Two","Londrina Solid","Medula One","Contrail One","Chenla","Stoke","Rochester","Coda","Laila","Molle","Convergence","Encode Sans Semi Condensed","Supermercado One","Jomhuria","Ubuntu Mono","Corben","Jura","ZCOOL KuaiLe","Underdog","Asap Condensed","Zilla Slab","Kadwa","Voltaire","Rozha One","Hind Guntur","IM Fell English SC","Puritan","Proza Libre","Ruslan Display","Frank Ruhl Libre","Baloo Bhaijaan","Aclonica","Elsie","Niramit","Bilbo","Istok Web","Koulen","Arya","IBM Plex Mono","Shrikhand","Moul","Bokor","Chicle","Dangrek","NTR","Aref Ruqaa","Cormorant Upright","Sedgwick Ave","K2D","Coiny","Padauk","Ranga","Encode Sans Condensed"];
 const custom_utils = ['penta', 'quad', 'triple', 'mvp', 'winstreak', 'legendary', '6kills', '7kills', '8kills', 'aov-logo-1', 'aov-logo-2', 'aov-logo-3', 'aov-logo-4', 'aov-logo-5', 'fire-splash', 'splash-blue', 'tencent-1'];
