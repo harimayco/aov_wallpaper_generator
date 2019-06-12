@@ -340,8 +340,8 @@ const wp_data = [{
     "name": "moren",
     "value": "moen",
     "tag": "archer",
-    "skinsCount": 2,
-    "bgCount": 2
+    "skinsCount": 3,
+    "bgCount": 3
 }, {
     "name": "wonderwoman",
     "value": "wonderwoman",
