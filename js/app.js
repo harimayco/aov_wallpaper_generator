@@ -600,6 +600,8 @@ function set_mode(mode = 'default') {
 
     if (mode == 'desktop') {
         set_desktop();
+    } else if (mode == 'square') {
+        set_square();
     } else {
         set_mobile();
     }
@@ -617,6 +619,7 @@ function set_desktop() {
     current_mode = 'desktop';
 }
 
+
 function set_mobile() {
     $('.main .canvas-section').removeClass('col-md-12').addClass('col-md-6');
     $('.main .tool-section').removeClass('col-md-8').addClass('col-md-6');
@@ -627,6 +630,25 @@ function set_mobile() {
     } else {
         stage.width(initial_canvas_width);
         stage.height(initial_canvas_height);
+        canvas_ratio = initial_canvas_ratio;
+    }
+    //console.log(screen_width);
+    //console.log(screen_height);
+    stage.draw();
+    $('#aov-canvas-wrapper').width(stage.width()).height(stage.height());
+    current_mode = 'mobile';
+}
+
+function set_square() {
+    $('.main .canvas-section').removeClass('col-md-12').addClass('col-md-6');
+    $('.main .tool-section').removeClass('col-md-8').addClass('col-md-6');
+    if (is_tablet_or_mobile) {
+        stage.width(screen_width);
+        stage.height(screen_width);
+        canvas_ratio = screen_ratio;
+    } else {
+        stage.width(initial_canvas_width);
+        stage.height(initial_canvas_width);
         canvas_ratio = initial_canvas_ratio;
     }
     //console.log(screen_width);
@@ -819,14 +841,17 @@ function activate_transform(target) {
     layer.draw();
 }
 
-function add_text(text, color = 'orange', font = 'arial', text_align = 'left') {
+function add_text(text, color = 'orange', font = 'arial', text_align = 'left', stroke = "#000") {
+    var stroke_width = (stroke != null) ? 1 : 0;
     var simpleText = new Konva.Text({
         x: stage.getWidth() / 2,
         y: 15,
         text: text,
-        fontSize: 30,
+        fontSize: 35,
         fontFamily: font,
         fill: color,
+        stroke: stroke,
+        strokeWidth: stroke_width,
         draggable: true,
         align: text_align
     });
@@ -877,7 +902,8 @@ $(function () {
     });
 
     $('#tambah-text').click(function () {
-        add_text($('#text').val(), $('#text-color').val(), $('#text-font').val(), $('#text-align').val())
+        var stroke_color_add = ($('#stroke-enabled').prop('checked') == "1") ? $('#stroke-color').val() : null;
+        add_text($('#text').val(), $('#text-color').val(), $('#text-font').val(), $('#text-align').val(), stroke_color_add)
     });
     $('#download-image').click(function () {
         stage.find('Transformer').destroy();
@@ -906,12 +932,14 @@ $(function () {
         }
     });
 
-    $('#text, #text-color, #text-font, #text-align').on('change keyup paste', function () {
+    $('#text, #text-color, #text-font, #text-align, #stroke-enabled, #stroke-color').on('change keyup paste', function () {
         var text = $('#text').val();
         var color = $('#text-color').val();
         var font = $('#text-font').val();
         var align = $('#text-align').val();
-        set_preview_text(text, color, font, align);
+        var stroke = ($('#stroke-enabled').prop("checked") == true) ? 1 : 0;
+        var stroke_color = $('#stroke-color').val();
+        set_preview_text(text, color, font, align, stroke, stroke_color);
     });
 
     $('.menu-btn').click(function (e) {
@@ -940,13 +968,13 @@ function readUrl(input) {
 }
 
 
-function set_preview_text(text = '', color = 'black', font = 'arial', align = 'left') {
+function set_preview_text(text = '', color = 'black', font = 'arial', align = 'left', stroke = 0, stroke_color = '#000') {
     if (text == '') {
         $('#text-prev-wrapper').html('');
         return;
     }
 
-    $('#text-prev-wrapper').html('<center>Preview:</center><br /><p style="text-align:' + align + ';font-size:35px;color:' + color + ';font-family: \'' + font + '\';background-color:#cacaca;padding:10px">' + text + '</p>');
+    $('#text-prev-wrapper').html('<center>Preview:</center><br /><p style="text-align:' + align + ';font-size:35px;color:' + color + ';font-family: \'' + font + '\';padding:10px; -webkit-text-stroke: ' + stroke + 'px ' + stroke_color + ';">' + text + '</p>');
 }
 
 function add_image(file, baseon = 'width') {

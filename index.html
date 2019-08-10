@@ -84,6 +84,16 @@
       white-space: pre-wrap;
     }
 
+    #text-prev-wrapper p {
+      background-image:
+        /* tint image */
+        linear-gradient(to right, rgba(192, 192, 192, 0.75), rgba(192, 192, 192, 0.75)),
+        /* checkered effect */
+        linear-gradient(to right, black 50%, white 50%), linear-gradient(to bottom, black 50%, white 50%);
+      background-blend-mode: normal, difference, normal;
+      background-size: 0.7em 0.7em;
+    }
+
     .menu-btn {
       margin-top: 5px;
       min-width: 120px;
@@ -157,7 +167,13 @@
                 <div class="card card-body" id="text-wrapper">
                   Masukkan Teks: <textarea class="form-control" id="text"></textarea>
                   Pilih Warna: <input type="color" id="text-color" class="form-control" name="textcolor"
-                    value="#000000">
+                    value="#ffffff">
+                  <div class="form-inline" style="margin:10px">
+                    <input type="checkbox" id="stroke-enabled" value=1 name="stroke-enabled"><label
+                      for="stroke-enabled"> &nbsp;Stroke &nbsp;
+                      &nbsp;</label><input type="color" id="stroke-color" class="form-control" name="textcolor"
+                      value="#000000" style="width:200px">
+                  </div>
                   <div class="form-inline" style="margin:10px">
                     Font: &nbsp; &nbsp;
                     <select style="width:200px" class="form-control" id="text-font"></select> &nbsp; &nbsp;
@@ -180,6 +196,7 @@
         <div style="margin-bottom:10px;color:#fff;font-weight:bold;text-align:center">Mode : <select id="selected-mode">
             <option value="mobile">Handphone / Tablet</option>
             <option value="desktop">PC / Desktop</option><br />
+            <option value="square">Square</option><br />
           </select></div>
         <div id="right-wrapper">
           <div id="aov-canvas-wrapper">
