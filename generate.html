@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Generator</title>
+
+<body>
+
+  <script>
+    var wp_data = [{
+      "name": "toro",
+      "value": "toro",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "raz",
+      "value": "raz",
+      "tag": "mage",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "zephys",
+      "value": "zephys",
+      "tag": "warrior",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "veera",
+      "value": "veera",
+      "tag": "mage",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "violet",
+      "value": "violet",
+      "tag": "archer",
+      "skinsCount": 7,
+      "bgCount": 7
+    }, {
+      "name": "yorn",
+      "value": "yorn",
+      "tag": "archer",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "omega",
+      "value": "omega",
+      "tag": "tank",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "butterfly",
+      "value": "butterfly",
+      "tag": "assassin",
+      "skinsCount": 7,
+      "bgCount": 7
+    }, {
+      "name": "mina",
+      "value": "mina",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "azzenka",
+      "value": "azzenka",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "lubu",
+      "value": "lubu",
+      "tag": "warrior",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "zanis",
+      "value": "zanis",
+      "tag": "warrior",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "valhein",
+      "value": "valhein",
+      "tag": "archer",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "thane",
+      "value": "thane",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "ilumia",
+      "value": "ilumia",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "lauriel",
+      "value": "lauriel",
+      "tag": "mage",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "nakroth",
+      "value": "nakroth",
+      "tag": "assassin",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "diaochan",
+      "value": "diaochan",
+      "tag": "mage",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "aleister",
+      "value": "aleister",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "wukong",
+      "value": "wukong",
+      "tag": "assassin",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "krixi",
+      "value": "krixi",
+      "tag": "mage",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "gildur",
+      "value": "gildur",
+      "tag": "tank",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "kahli",
+      "value": "kahli",
+      "tag": "mage",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "chaugnar",
+      "value": "chaugnar",
+      "tag": "support",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "ormarr",
+      "value": "ormarr",
+      "tag": "warrior",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "alice",
+      "value": "alice",
+      "tag": "support",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "mganga",
+      "value": "mganga",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "maloch",
+      "value": "maloch",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "taara",
+      "value": "taara",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "preyta",
+      "value": "preyta",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "cresht",
+      "value": "cresht",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "fennik",
+      "value": "fennik",
+      "tag": "archer",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "grakk",
+      "value": "grakk",
+      "tag": "tank",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "natalya",
+      "value": "natalya",
+      "tag": "mage",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "lumburr",
+      "value": "lumburr",
+      "tag": "support",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "jinna",
+      "value": "jinna",
+      "tag": "mage",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "payna",
+      "value": "payna",
+      "tag": "support",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "arthur",
+      "value": "arthur",
+      "tag": "warrior",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "kriknak",
+      "value": "kriknak",
+      "tag": "assassin",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "airi",
+      "value": "airi",
+      "tag": "warrior",
+      "skinsCount": 7,
+      "bgCount": 7
+    }, {
+      "name": "batman",
+      "value": "batman",
+      "tag": "assassin",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "slimz",
+      "value": "slimz",
+      "tag": "archer",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "skud",
+      "value": "skud",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "zuka",
+      "value": "zuka",
+      "tag": "warrior",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "murad",
+      "value": "murad",
+      "tag": "assassin",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "telannas",
+      "value": "telannas",
+      "tag": "archer",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "Zill",
+      "value": "qier",
+      "tag": "mage",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "ignis",
+      "value": "ignis",
+      "tag": "mage",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "joker",
+      "value": "joker",
+      "tag": "archer",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "superman",
+      "value": "superman",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "kilgroth",
+      "value": "kilgroth",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "xeniel",
+      "value": "xeniel",
+      "tag": "tank",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "arduin",
+      "value": "arduin",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "Ryoma",
+      "value": "longma",
+      "tag": "warrior",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "astrid",
+      "value": "aicuisi",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "moren",
+      "value": "moen",
+      "tag": "archer",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "wonderwoman",
+      "value": "wonderwoman",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "tulen",
+      "value": "tulun",
+      "tag": "mage",
+      "skinsCount": 6,
+      "bgCount": 6
+    }, {
+      "name": "lindis",
+      "value": "lindi",
+      "tag": "archer",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "timi",
+      "value": "timi",
+      "tag": "support",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "omen",
+      "value": "yecha",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "max",
+      "value": "maikesi",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "liliana",
+      "value": "lilian",
+      "tag": "mage",
+      "skinsCount": 5,
+      "bgCount": 5
+    }, {
+      "name": "wisp",
+      "value": "lingling",
+      "tag": "archer",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "arum",
+      "value": "airui",
+      "tag": "tank",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "rourke",
+      "value": "luoke",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "roxie",
+      "value": "nuokexi",
+      "tag": "warrior",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "baldum",
+      "value": "bodun",
+      "tag": "tank",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "marja",
+      "value": "majia",
+      "tag": "mage",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "emily",
+      "value": "aimili",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "annete",
+      "value": "annaite",
+      "tag": "support",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "y'bneth",
+      "value": "gumu",
+      "tag": "tank",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "elsu",
+      "value": "su",
+      "tag": "archer",
+      "skinsCount": 4,
+      "bgCount": 4
+    }, {
+      "name": "richter/Riktor",
+      "value": "ruike",
+      "tag": "warrior",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "Sephera",
+      "value": "lan",
+      "tag": "mage",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "quillen",
+      "value": "kuilun",
+      "tag": "assassin",
+      "skinsCount": 3,
+      "bgCount": 3
+    }, {
+      "name": "Darcy",
+      "value": "daerxi",
+      "tag": "mage",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Capheny",
+      "value": "kafenni",
+      "tag": "archer",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Verez",
+      "value": "feilei",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Hayate",
+      "value": "haiya",
+      "tag": "archer",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Errol",
+      "value": "ailuo",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Florentino",
+      "value": "foluolun",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }, {
+      "name": "Yena",
+      "value": "yena",
+      "tag": "warrior",
+      "skinsCount": 2,
+      "bgCount": 2
+    }
+    ];
+
+    var newData = [{ name: "牛魔王", value: "toro", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "拉茲", value: "raz", tag: "mage", skinsCount: 4, bgCount: 4 }, { name: "瑟斐斯", value: "zephys", tag: "warrior", skinsCount: 5, bgCount: 5 }, { name: "薇菈", value: "veera", tag: "mage", skinsCount: 5, bgCount: 5 }, { name: "堇", value: "violet", tag: "archer", skinsCount: 8, bgCount: 8 }, { name: "勇", value: "yorn", tag: "archer", skinsCount: 5, bgCount: 5 }, { name: "歐米茄", value: "omega", tag: "tank", skinsCount: 2, bgCount: 2 }, { name: "刀鋒寶貝", value: "butterfly", tag: "assassin", skinsCount: 7, bgCount: 7 }, { name: "美娜", value: "mina", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "阿茲卡", value: "azzenka", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "呂布", value: "lubu", tag: "warrior", skinsCount: 6, bgCount: 6 }, { name: "趙雲", value: "zanis", tag: "warrior", skinsCount: 6, bgCount: 6 }, { name: "凡恩", value: "valhein", tag: "archer", skinsCount: 6, bgCount: 6 }, { name: "薩尼", value: "thane", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "盧蜜亞", value: "ilumia", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "蘿兒", value: "lauriel", tag: "mage", skinsCount: 5, bgCount: 5 }, { name: "納克羅斯", value: "nakroth", tag: "assassin", skinsCount: 5, bgCount: 5 }, { name: "貂蟬", value: "diaochan", tag: "mage", skinsCount: 4, bgCount: 4 }, { name: "阿萊斯特", value: "aleister", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "悟空", value: "wukong", tag: "assassin", skinsCount: 6, bgCount: 6 }, { name: "克里希", value: "krixi", tag: "mage", skinsCount: 6, bgCount: 6 }, { name: "哥德爾", value: "gildur", tag: "tank", skinsCount: 2, bgCount: 2 }, { name: "卡莉", value: "kahli", tag: "mage", skinsCount: 4, bgCount: 4 }, { name: "查戈納爾", value: "chaugnar", tag: "support", skinsCount: 3, bgCount: 3 }, { name: "渥馬爾", value: "ormarr", tag: "warrior", skinsCount: 4, bgCount: 4 }, { name: "愛麗絲", value: "alice", tag: "support", skinsCount: 3, bgCount: 3 }, { name: "穆加爵", value: "mganga", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "馬洛斯", value: "maloch", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "塔拉", value: "taara", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "普雷塔", value: "preyta", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "克萊斯", value: "cresht", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "菲尼克", value: "fennik", tag: "archer", skinsCount: 3, bgCount: 3 }, { name: "夸克", value: "grakk", tag: "tank", skinsCount: 3, bgCount: 3 }, { name: "娜塔亞", value: "natalya", tag: "mage", skinsCount: 5, bgCount: 5 }, { name: "朗博", value: "lumburr", tag: "support", skinsCount: 2, bgCount: 2 }, { name: "金納", value: "jinna", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "佩娜", value: "payna", tag: "support", skinsCount: 3, bgCount: 3 }, { name: "莫托斯", value: "arthur", tag: "warrior", skinsCount: 4, bgCount: 4 }, { name: "科里納卡", value: "kriknak", tag: "assassin", skinsCount: 3, bgCount: 3 }, { name: "愛里", value: "airi", tag: "warrior", skinsCount: 8, bgCount: 8 }, { name: "蝙蝠俠", value: "batman", tag: "assassin", skinsCount: 2, bgCount: 2 }, { name: "史蘭茲", value: "slimz", tag: "archer", skinsCount: 3, bgCount: 3 }, { name: "司科德", value: "skud", tag: "warrior", skinsCount: 4, bgCount: 4 }, { name: "祖卡", value: "zuka", tag: "warrior", skinsCount: 6, bgCount: 6 }, { name: "莫拉", value: "murad", tag: "assassin", skinsCount: 7, bgCount: 7 }, { name: "特爾安娜絲", value: "telannas", tag: "archer", skinsCount: 6, bgCount: 6 }, { name: "齊爾", value: "qier", tag: "mage", skinsCount: 4, bgCount: 4 }, { name: "伊耿士", value: "ignis", tag: "mage", skinsCount: 2, bgCount: 2 }, { name: "小丑", value: "joker", tag: "archer", skinsCount: 2, bgCount: 2 }, { name: "超人", value: "superman", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "凱格路士", value: "kilgroth", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "贊尼爾", value: "xeniel", tag: "tank", skinsCount: 5, bgCount: 5 }, { name: "阿杜恩", value: "arduin", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "龍馬", value: "longma", tag: "warrior", skinsCount: 4, bgCount: 4 }, { name: "艾翠絲", value: "aicuisi", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "摩恩", value: "moen", tag: "archer", skinsCount: 3, bgCount: 3 }, { name: "神力女超人", value: "wonderwoman", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "圖倫", value: "tulun", tag: "mage", skinsCount: 7, bgCount: 7 }, { name: "琳蒂", value: "lindi", tag: "archer", skinsCount: 5, bgCount: 5 }, { name: "提米", value: "timi", tag: "support", skinsCount: 2, bgCount: 2 }, { name: "夜叉", value: "yecha", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "麥克思", value: "maikesi", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "莉莉安", value: "lilian", tag: "mage", skinsCount: 6, bgCount: 6 }, { name: "靈靈", value: "lingling", tag: "archer", skinsCount: 3, bgCount: 3 }, { name: "艾瑞", value: "airui", tag: "tank", skinsCount: 4, bgCount: 4 }, { name: "洛克", value: "luoke", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "諾可西", value: "nuokexi", tag: "warrior", skinsCount: 4, bgCount: 4 }, { name: "伯頓", value: "bodun", tag: "tank", skinsCount: 2, bgCount: 2 }, { name: "瑪迦", value: "majia", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "艾蜜莉", value: "aimili", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "安奈特", value: "annaite", tag: "support", skinsCount: 3, bgCount: 3 }, { name: "古木", value: "gumu", tag: "tank", skinsCount: 2, bgCount: 2 }, { name: "蘇", value: "su", tag: "archer", skinsCount: 5, bgCount: 5 }, { name: "瑞克", value: "ruike", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "瀾", value: "lan", tag: "mage", skinsCount: 2, bgCount: 2 }, { name: "奎倫", value: "kuilun", tag: "assassin", skinsCount: 4, bgCount: 4 }, { name: "達爾西", value: "daerxi", tag: "mage", skinsCount: 3, bgCount: 3 }, { name: "卡芬妮", value: "kafenni", tag: "archer", skinsCount: 2, bgCount: 2 }, { name: "緋淚", value: "feilei", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "亥犽", value: "haiya", tag: "archer", skinsCount: 2, bgCount: 2 }, { name: "埃羅", value: "ailuo", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "弗洛倫", value: "foluolun", tag: "warrior", skinsCount: 3, bgCount: 3 }, { name: "葉娜", value: "yena", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "銀晝", value: "enzo", tag: "assassin", skinsCount: 2, bgCount: 2 }, { name: "筱清", value: "qi", tag: "warrior", skinsCount: 2, bgCount: 2 }, { name: "皮皮", value: "zip", tag: "support", skinsCount: 2, bgCount: 2 }], r = [{ index: [2], hero: "zip" }, { index: [2], hero: "qi" }, { index: [8], hero: "violet" }, { index: [4], hero: "kuilun" }];
+
+    var newJson = [];
+    var need_add = [];
+    var need_update = [];
+
+
+    var totalNewData = newData.length;
+    var totalOldData = wp_data.length;
+
+    var i = 1;
+    var found = false;
+    var updated = false
+
+    document.write("Total List Lama: " + wp_data.length);
+    document.write("<br />Total List Baru: " + newData.length);
+    document.write("<br />==============================<br />");
+
+    newData.forEach(function (hero) {
+      document.write(i + ". Code: " + hero.value);
+      updated = false;
+      found = false;
+      old_hero = null;
+      wp_data.forEach(function (oldHero) {
+        if (oldHero.value == hero.value) {
+          found = true;
+          old_hero = oldHero;
+        }
+      });
+
+      if (old_hero != null) {
+        document.write(" found inside old data as " + old_hero.name);
+        if (hero.skinsCount == old_hero.skinsCount) {
+          document.write("<br /><span style=\"color:green\">Jumlah skin sama</span>");
+        } else {
+          document.write("<br /><span style=\"color:red\">Jumlah skin tidak sama!</span> Lama: " + old_hero.skinsCount + ", Baru: " + hero.skinsCount);
+          updated = true;
+        }
+
+        if (hero.bgCount == old_hero.bgCount) {
+          document.write("<br /><span style=\"color:green\">Jumlah BG sama</span>");
+        } else {
+          document.write("<br /><span style=\"color:red\">Jumlah BG tidak sama!</span> Lama: " + old_hero.bgCount + ", Baru: " + hero.bgCount);
+          updated = true;
+        }
+
+        if (updated) {
+          need_update.push(hero);
+        }
+
+      } else {
+        document.write(" <span style=\"color:blue\">New Item!</span>");
+        document.write("<br />Value: " + hero.value);
+        document.write("<br />Skins: " + hero.skinsCount);
+        document.write("<br />BG: " + hero.bgCount);
+        need_add.push(hero);
+      }
+
+      document.write("<br />========================================== <br />");
+
+      i++;
+    });
+
+    var updatedData = wp_data.map(function (item) {
+      need_update.forEach(function (hero) {
+        if (item.value == hero.value) {
+          item.skinsCount = hero.skinsCount;
+          item.bgCount = hero.bgCount;
+          return;
+        }
+      });
+      return item;
+    });
+
+    var fixedData = updatedData.concat(need_add);
+
+    document.write("<br /><br />" + JSON.stringify(fixedData) + "<br />")
+
+  </script>
+</body>
+</head>
+
+</html>
