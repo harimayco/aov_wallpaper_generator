@@ -524,6 +524,7 @@
 
     document.write("Total List Lama: " + wp_data.length);
     document.write("<br />Total List Baru: " + newData.length);
+    document.write("<br />Total Butuh Update: <span id='update_count'>" + newData.length + "</span>");
     document.write("<br />==============================<br />");
 
     newData.forEach(function (hero) {
@@ -581,6 +582,8 @@
       });
       return item;
     });
+
+    document.getElementById('update_count').innerHTML = need_update.length;
 
     var fixedData = updatedData.concat(need_add);
 
