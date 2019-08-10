@@ -96,6 +96,17 @@
     #ghcard-harimayco-1 {
       max-width: 100%;
     }
+
+    #container {
+      background-image:
+        /* tint image */
+        linear-gradient(to right, rgba(192, 192, 192, 0.75), rgba(192, 192, 192, 0.75)),
+        /* checkered effect */
+        linear-gradient(to right, black 50%, white 50%),
+        linear-gradient(to bottom, black 50%, white 50%);
+      background-blend-mode: normal, difference, normal;
+      background-size: 2em 2em;
+    }
   </style>
 </head>
 
@@ -172,7 +183,7 @@
           </select></div>
         <div id="right-wrapper">
           <div id="aov-canvas-wrapper">
-            <div id="container" style="background-color:#fff;"></div>
+            <div id="container" style=""></div>
           </div>
           <p style="text-align:center">
             <button class="btn btn-primary" type="button" id="download-image" style="margin-top:10px"><i
