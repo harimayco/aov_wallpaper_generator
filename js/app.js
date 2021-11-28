@@ -799,21 +799,87 @@ window.layer = new Konva.Layer();
 // draw the image
 layer.draw();
 
-$('html').keyup(function (e) {
-    if (e.keyCode == 46) {
-        //alert('Delete key released');
-        active_target.destroy();
-        stage.find('Transformer').destroy();
-        layer.draw();
+window.tr = null;
+window.deleteButton = null;
 
-    }
-});
+var menuNode = document.getElementById('context-menu');
 
 stage.on('dragstart click tap', function (e) {
     activate_transform(e.target);
 });
 
+window.addEventListener('click', () => {
+    // hide menu
+    menuNode.style.display = 'none';
+});
+
+stage.on('dblclick dbltap', function (e) {
+    showContextMenu(e);
+});
+
+stage.on('contextmenu', function (e) {
+    // prevent default behavior
+    showContextMenu(e);
+});
+
+function showContextMenu(e) {
+    e.evt.preventDefault();
+    if (e.target === stage) {
+        // if we are on empty place of the stage we will do nothing
+        return;
+    }
+    active_target = e.target;
+    // show menu
+    menuNode.style.display = 'initial';
+    var containerRect = stage.container().getBoundingClientRect();
+    menuNode.style.top =
+        $(".canvas-section").offset().top + stage.getPointerPosition().y + 4 + 'px';
+    menuNode.style.left =
+        $(".canvas-section").offset().left + stage.getPointerPosition().x + 16 + 'px';
+}
+
+$('html').keyup(function (e) {
+    if (e.keyCode == 46) {
+        //alert('Delete key released');
+        active_target.destroy();
+        stage.find('Transformer').detach();
+        layer.draw();
+
+    }
+});
+
+$("#bf-button").click(function () {
+    active_target.zIndex(active_target.zIndex() + 1);
+    layer.draw();
+});
+
+$("#sb-button").click(function () {
+    active_target.zIndex(active_target.zIndex() - 1);
+    layer.draw();
+});
+$("#stb-button").click(function () {
+    active_target.zIndex(0);
+    layer.draw();
+});
+
+$("#btf-button").click(function () {
+    active_target.zIndex(999998);
+    layer.draw();
+});
+$("#fh-button").click(function () {
+    flipHorizontal();
+});
+
+$("#fv-button").click(function () {
+    flipVertical();
+});
+$("#delete-button").click(function () {
+    delete_obj();
+});
+
+
 window.flipHorizontal = function () {
+    activate_transform(active_target);
     var width = active_target.getWidth();
     active_target.scaleX(active_target.scaleX() * -1);
     layer.draw();
@@ -824,35 +890,47 @@ window.flipHorizontal = function () {
     }
 
     layer.draw();
+
+}
+
+window.flipVertical = function () {
     activate_transform(active_target);
+
+    var height = active_target.getHeight();
+    active_target.scaleY(active_target.scaleY() * -1);
+    layer.draw();
+    if (active_target.getOffsetY() > 0) {
+        active_target.setOffsetY(0);
+    } else {
+        active_target.setOffsetY(height);
+    }
+
+    layer.draw();
 }
 
 function activate_transform(target) {
     active_target = target;
-    // if click on empty area - remove all transformers
-    if (target === stage) {
-        stage.find('Transformer').destroy();
+    if (tr != null) {
+        tr.attachTo(target);
+        deleteButton.setX(tr.getWidth());
+        tr.zIndex(999999);
         layer.draw();
         return;
     }
-
-    // remove old transformers
-    // TODO: we can skip it if current rect is already selected
-    stage.find('Transformer').destroy();
 
     // create new transformer
     tr = new Konva.Transformer({
         anchorStroke: 'red',
         anchorFill: 'yellow',
         anchorSize: 20,
-        borderStroke: '#dedede',
+        borderStroke: '#fff',
         borderDash: [3, 3],
         enabledAnchors: ['bottom-right'],
         centeredScaling: true
     });
     layer.add(tr);
 
-
+    tr.attachTo(target);
     var deleteImageObj = new Image();
     deleteImageObj.setAttribute('crossOrigin', 'anonymous');
     deleteImageObj.onload = function () {
@@ -867,14 +945,15 @@ function activate_transform(target) {
         layer.draw();
 
         tr.on('transform', () => {
+            //active_target.clearCache();
             deleteButton.x(tr.getWidth());
-            //layer.draw();
+            //tr.update();
+            //active_target.cache();
+            layer.draw();
         });
 
         deleteButton.on('click tap', () => {
-            tr.destroy();
-            active_target.destroy();
-            layer.draw();
+            delete_obj();
         })
         deleteButton.on('mouseenter', function () {
             stage.container().style.cursor = 'pointer';
@@ -888,7 +967,7 @@ function activate_transform(target) {
 
     deleteImageObj.src = 'images/del.png';
 
-    tr.attachTo(target);
+
 
     var flipImageObj = new Image();
     flipImageObj.setAttribute('crossOrigin', 'anonymous');
@@ -919,12 +998,16 @@ function activate_transform(target) {
         });
     }
 
-
-
     flipImageObj.src = 'images/flip.png';
 
-    tr.attachTo(target);
+    //tr.attachTo(target);
 
+    layer.draw();
+}
+
+function delete_obj() {
+    tr.detach();
+    active_target.destroy();
     layer.draw();
 }
 
@@ -944,6 +1027,7 @@ function add_text(text, color = 'orange', font = 'arial', text_align = 'left', s
     });
     layer.add(simpleText);
     stage.add(layer);
+    activate_transform(simpleText);
     //layer.draw();
 
 }
@@ -993,7 +1077,7 @@ $(function () {
         add_text($('#text').val(), $('#text-color').val(), $('#text-font').val(), $('#text-align').val(), stroke_color_add)
     });
     $('#download-image').click(function () {
-        stage.find('Transformer').destroy();
+        stage.find('Transformer').detach();
         downloadCanvas('aov-wallpaper.png');
     });
 
@@ -1133,7 +1217,7 @@ function add_image(file, baseon = 'width') {
 
         // add the layer to the stage
         stage.add(layer);
-        stage.find('Transformer').destroy();
+        stage.find('Transformer').detach();
         activate_transform(newImage);
 
         $('html, body').animate({
