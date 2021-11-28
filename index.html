@@ -117,6 +117,28 @@
       background-blend-mode: normal, difference, normal;
       background-size: 10px 10px;
     }
+
+    #context-menu {
+      display: none;
+      position: absolute;
+      width: 150px;
+      background-color: white;
+      box-shadow: 0 0 5px grey;
+      border-radius: 3px;
+      font-size: 15px;
+    }
+
+    #context-menu button {
+      width: 100%;
+      background-color: white;
+      border: none;
+      margin: 0;
+      padding: 10px;
+    }
+
+    #context-menu button:hover {
+      background-color: lightgray;
+    }
   </style>
 </head>
 
@@ -204,7 +226,19 @@
           </div>
           <p style="text-align:center">
             <button class="btn btn-primary" type="button" id="download-image" style="margin-top:10px"><i
-                class="fas fa-download"></i><br />Download Wallpaper</button></p>
+                class="fas fa-download"></i><br />Download Wallpaper</button>
+          </p>
+        </div>
+      </div>
+      <div id="context-menu">
+        <div>
+          <button id="btf-button">Bring to Front</button>
+          <button id="bf-button">Bring Forward</button>
+          <button id="sb-button">Send Backward</button>
+          <button id="stb-button">Send To Back</button>
+          <button id="fv-button">Flip Vertical</button>
+          <button id="fh-button">Flip Horizontal</button>
+          <button id="delete-button">Delete</button>
         </div>
       </div>
       <div class="col col-md-12">
