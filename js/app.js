@@ -1075,6 +1075,9 @@ $(function () {
     $('#tambah-text').click(function () {
         var stroke_color_add = ($('#stroke-enabled').prop('checked') == "1") ? $('#stroke-color').val() : null;
         add_text($('#text').val(), $('#text-color').val(), $('#text-font').val(), $('#text-align').val(), stroke_color_add)
+        if (is_tablet_or_mobile) {
+            $('.collapse').removeClass('show');
+        }
     });
     $('#download-image').click(function () {
         stage.find('Transformer').detach();
@@ -1123,6 +1126,13 @@ $(function () {
     $('#custom-image').on('change', function (e) {
         readUrl(this);
     });
+
+    $(document).click((event) => {
+        if (!$(event.target).closest('#left-wrapper').length) {
+            // the click occured outside '#element'
+            $('.collapse').removeClass('show');
+        }
+    });
 });
 
 function readUrl(input) {
@@ -1148,15 +1158,25 @@ function set_preview_text(text = '', color = 'black', font = 'arial', align = 'l
     $('#text-prev-wrapper').html('<center>Preview:</center><br /><p style="text-align:' + align + ';font-size:35px;color:' + color + ';font-family: \'' + font + '\';padding:10px; -webkit-text-stroke: ' + stroke + 'px ' + stroke_color + ';">' + text + '</p>');
 }
 
+function getLoadingWrapper() {
+    if (is_tablet_or_mobile) {
+        return $("#left-wrapper > div");
+    }
+
+    return $("#left-wrapper");
+}
 function add_image(file, baseon = 'width') {
-    $('#left-wrapper').LoadingOverlay("show", {
+    getLoadingWrapper().LoadingOverlay("show", {
         text: "Loading Image...",
         textResizeFactor: 0.3
     });
     var imageObj = new Image();
     imageObj.setAttribute('crossOrigin', 'anonymous');
     imageObj.onload = function () {
-        $('#left-wrapper').LoadingOverlay("hide");
+        getLoadingWrapper().LoadingOverlay("hide");
+        if (is_tablet_or_mobile) {
+            $('.collapse').removeClass('show');
+        }
         var canvas = stage.attrs;
         var imageAspectRatio = imageObj.width / imageObj.height;
         var canvasAspectRatio = canvas.width / canvas.height;

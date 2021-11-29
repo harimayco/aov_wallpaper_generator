@@ -47,6 +47,61 @@
       body {
         background-size: unset;
         background-position-x: right;
+        padding: 0px !important;
+      }
+
+      div.tool-section {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        z-index: 9999;
+        margin-bottom: 0px;
+        padding: 0px;
+      }
+
+      #left-wrapper {
+        padding: 0px;
+        margin: 0px !important;
+      }
+
+      .menu-btn {
+        min-width: auto !important;
+        font-size: 13px;
+      }
+
+      .accordion {
+        text-align: center;
+        margin-bottom: 0px;
+        z-index: 99999999;
+        background-color: #fff;
+        width: 100%;
+      }
+
+      #left-wrapper>div {
+        position: fixed;
+        bottom: 58px;
+        left: 0px;
+        right: 0px;
+        width: 100%;
+      }
+
+      #download-image {
+        width: 100%;
+      }
+
+      .main-title {
+        font-size: 1.8rem;
+
+      }
+
+      .main-logo img {
+        width: 100px;
+        margin-top: 10px;
+      }
+
+      .canvas-section {
+        padding: 0px !important;
       }
     }
 
@@ -62,8 +117,9 @@
 
     .fb-comment {
       width: 700px;
-      max-width: 100%;
+      max-width: 100% !important;
       margin: 10px auto;
+      background-color: #ffffffab;
 
     }
 
@@ -144,7 +200,7 @@
 
 <body style="padding:10px">
   <div class="container">
-    <div style="text-align:center"><img src="images/aov-logo.png" width='150' /></div>
+    <div class="main-logo" style="text-align:center"><img src="images/aov-logo.png" width='150' /></div>
     <h1 class="main-title">AOV Wallpaper Generator</h1>
     <div class="row justify-content-md-center main">
       <div class="col col-md-6 tool-section">
@@ -241,14 +297,14 @@
           <button id="delete-button">Delete</button>
         </div>
       </div>
-      <div class="col col-md-12">
-        <div class="fb-comment">
-          <h3 class="main-title">Berikan saranmu untuk aplikasi ini</h3>
-          <div data-href="https://harimayco.github.io/aov_wallpaper_generator/" class="fb-comments" data-width="100%"
-            data-numposts="10" data-colorscheme="dark"></div>
-        </div>
+
+      <div class="fb-comment">
+        <h3 class="main-title">Berikan saranmu untuk aplikasi ini</h3>
+        <div data-href="https://harimayco.github.io/aov_wallpaper_generator/" class="fb-comments" data-width="100%"
+          data-numposts="10" data-colorscheme="dark"></div>
       </div>
     </div>
+
   </div>
   <footer style="text-align:center">
     *Semua Content diambil dari CDN Garena, kami tidak mengklaim segala isi konten yg ada pada website ini. <br />
