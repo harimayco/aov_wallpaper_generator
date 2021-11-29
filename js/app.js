@@ -749,7 +749,7 @@ function render_custom_utils(container) {
     var html = '';
     var i = 1;
     $.each(custom_utils, function (i, data) {
-        html = html + '<img src="images/utils-thumb/' + data + '.jpg" data-source="images/utils/' + data + '.png" data-sub="custom-utils" height="70" /> ';
+        html = html + '<img loading="lazy" src="images/utils-thumb/' + data + '.jpg" data-source="images/utils/' + data + '.png" data-sub="custom-utils" height="70" /> ';
         i++;
     });
     container.append(html);
@@ -758,7 +758,7 @@ function render_custom_utils(container) {
 function render_utils(container, count = 0) {
     var html = '';
     for (var x = count; x >= 1; x--) {
-        html = html + '<img src="' + garena_wp + 'tw-title-thumb/' + x + '.jpg" data-sub="tw-title" width="140" data-number="' + x + '" /> ';
+        html = html + '<img loading="lazy" src="' + garena_wp + 'tw-title-thumb/' + x + '.jpg" data-sub="tw-title" width="140" data-number="' + x + '" /> ';
     }
     container.append(html);
 }
@@ -770,7 +770,7 @@ function render_thumbnails(type, container) {
         html = '';
         for (var x = 1; x <= data[type + 'Count']; x++) {
             //html = html + 'test';
-            html = html + '<img title="' + data['name'].toUpperCase() + '" data-hero="' + data['value'] + '" data-number=' + x + ' data-sub="' + type + '" class="' + type + ' ' + type + '-' + data['value'] + '" src="' + garena_cdn + data['value'] + '/' + type + '-thumb/' + x + '.jpg" width=50/>';
+            html = html + '<img loading="lazy" title="' + data['name'].toUpperCase() + '" data-hero="' + data['value'] + '" data-number=' + x + ' data-sub="' + type + '" class="' + type + ' ' + type + '-' + data['value'] + '" src="' + garena_cdn + data['value'] + '/' + type + '-thumb/' + x + '.jpg" width=50/>';
         }
         container.append(html);
     });
