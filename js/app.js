@@ -655,7 +655,18 @@ if (is_tablet_or_mobile) {
     var canvas_ratio = initial_canvas_ratio;
 }
 
+var isMobileApp = false;
+
+if (window.location.href.indexOf("?mobile_app=true") > -1) {
+    isMobileApp = true;
+}
+
 $(function () {
+    if (isMobileApp) {
+        $("#download-image").removeClass('btn-primary').addClass('btn-success');
+        $("#download-image > span").text('Save Image to Device');
+    }
+
     $('#aov-canvas-wrapper').css({
         "width": canvas_width,
         "height": canvas_height,
@@ -1258,10 +1269,15 @@ var downloadCanvas = function (name) {
     var blob = dataURLtoBlob(imgData);
     var objurl = URL.createObjectURL(blob);
 
-    link.download = name;
+    if (isMobileApp) {
+        window.exportImage.postMessage(imgData);
+    } else {
+        link.download = name;
 
-    link.href = objurl;
-    link.click();
+        link.href = objurl;
+        link.click();
+    }
+
 }
 
 function dataURLtoBlob(dataurl) {
