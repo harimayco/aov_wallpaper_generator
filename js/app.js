@@ -665,6 +665,7 @@ $(function () {
     if (isMobileApp) {
         $("#download-image").removeClass('btn-primary').addClass('btn-success');
         $("#download-image > span").text('Save Image to Device');
+        $(".fb-comment").hide();
     }
 
     $('#aov-canvas-wrapper').css({
@@ -1091,6 +1092,7 @@ $(function () {
         }
     });
     $('#download-image').click(function () {
+        $('body').LoadingOverlay("show");
         stage.find('Transformer').detach();
         downloadCanvas('aov-wallpaper.png');
     });
@@ -1186,7 +1188,12 @@ function add_image(file, baseon = 'width') {
     imageObj.onload = function () {
         getLoadingWrapper().LoadingOverlay("hide");
         if (is_tablet_or_mobile) {
-            $('.collapse').removeClass('show');
+            if ($('.collapse.show').attr('id') == 'bg-collapse') {
+                $("#btn-hero-nav").click();
+            } else {
+                $('.collapse.show').removeClass('show');
+            }
+
         }
         var canvas = stage.attrs;
         var imageAspectRatio = imageObj.width / imageObj.height;
@@ -1261,21 +1268,27 @@ function add_image(file, baseon = 'width') {
 
 
 var downloadCanvas = function (name) {
+
     var link = document.createElement("a");
     var imgData = stage.toDataURL({
         pixelRatio: canvas_ratio
     });
-    var strDataURI = imgData.substr(22, imgData.length);
+    //var strDataURI = imgData.substr(22, imgData.length);
     var blob = dataURLtoBlob(imgData);
     var objurl = URL.createObjectURL(blob);
+    try {
+        if (isMobileApp) {
+            window.exportImage.postMessage(imgData);
+        } else {
+            link.download = name;
 
-    if (isMobileApp) {
-        window.exportImage.postMessage(imgData);
-    } else {
-        link.download = name;
+            link.href = objurl;
+            link.click();
+        }
+    } catch (error) {
 
-        link.href = objurl;
-        link.click();
+    } finally {
+        $('body').LoadingOverlay("hide");
     }
 
 }
