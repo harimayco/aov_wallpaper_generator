@@ -854,7 +854,7 @@ $('html').keyup(function (e) {
     if (e.keyCode == 46) {
         //alert('Delete key released');
         active_target.destroy();
-        stage.find('Transformer').detach();
+        tr.detach();
         layer.draw();
 
     }
@@ -1093,7 +1093,7 @@ $(function () {
     });
     $('#download-image').click(function () {
         $('body').LoadingOverlay("show");
-        stage.find('Transformer').detach();
+        tr.detach();
         downloadCanvas('aov-wallpaper.png');
     });
 
@@ -1257,7 +1257,10 @@ function add_image(file, baseon = 'width') {
 
         // add the layer to the stage
         stage.add(layer);
-        stage.find('Transformer').detach();
+        if (tr != null) {
+            tr.detach();
+        }
+
         activate_transform(newImage);
 
         $('html, body').animate({
