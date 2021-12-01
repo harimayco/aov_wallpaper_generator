@@ -1141,9 +1141,11 @@ $(function () {
     });
 
     $(document).click((event) => {
-        if (!$(event.target).closest('#left-wrapper').length) {
-            // the click occured outside '#element'
-            $('.collapse').removeClass('show');
+        if (is_tablet_or_mobile) {
+            if (!$(event.target).closest('#left-wrapper').length) {
+                // the click occured outside '#element'
+                $('.collapse').removeClass('show');
+            }
         }
     });
 });
