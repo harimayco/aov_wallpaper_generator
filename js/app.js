@@ -1276,7 +1276,7 @@ var downloadCanvas = function (name) {
 
     var link = document.createElement("a");
     var imgData = stage.toDataURL({
-        pixelRatio: canvas_ratio
+        pixelRatio: canvas_ratio + (canvas_ratio * 0.3)
     });
     //var strDataURI = imgData.substr(22, imgData.length);
     var blob = dataURLtoBlob(imgData);
