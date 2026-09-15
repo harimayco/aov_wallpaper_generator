@@ -71,7 +71,7 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         {/* Left Column: Canvas Studio */}
         <section
-          className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[52vh] sm:h-[60vh] lg:h-[calc(100vh-6rem)] relative ${
+          className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[calc(100vh-8.5rem)] lg:h-[calc(100vh-6rem)] relative ${
             mobileActiveView === 'canvas' ? 'block' : 'hidden lg:flex'
           }`}
         >
