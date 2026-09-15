@@ -71,7 +71,7 @@ export default function App() {
       <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
         {/* Left Column: Canvas Studio */}
         <section
-          className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[70vh] lg:h-[calc(100vh-6rem)] relative ${
+          className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[52vh] sm:h-[60vh] lg:h-[calc(100vh-6rem)] relative ${
             mobileActiveView === 'canvas' ? 'block' : 'hidden lg:flex'
           }`}
         >
@@ -86,9 +86,9 @@ export default function App() {
             />
           </div>
 
-          {/* Selected Layer Action Toolbar */}
+          {/* Selected Layer Action Toolbar (Floating directly above mobile bottom nav on mobile) */}
           {selectedLayer && (
-            <div className="mt-3">
+            <div className="fixed bottom-16 left-2 right-2 z-40 lg:relative lg:bottom-auto lg:left-auto lg:right-auto lg:z-auto lg:mt-3">
               <LayerControlsBar
                 selectedLayer={selectedLayer}
                 onDuplicate={duplicateLayer}

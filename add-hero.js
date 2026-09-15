@@ -102,6 +102,7 @@ async function probeAndDownloadHero() {
   if (skinsCount === 0 && bgCount === 0) {
     console.error(`❌ No assets found for hero "${heroName}" on Garena CDN!`);
     console.error(`URL checked: ${BASE_URL}${heroName}/skins-thumb/1.jpg`);
+    console.error(`Tip: Note that Garena CDN uses Chinese transliterated hero slugs (e.g., "qier" for Zill, "longma" for Ryoma, "lilian" for Liliana, "yecha" for Omen, "aicuisi" for Astrid, "tulun" for Tulen, "airui" for Arum).`);
     process.exit(1);
   }
 
