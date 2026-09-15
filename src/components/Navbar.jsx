@@ -94,11 +94,11 @@ export default function Navbar({
         <div className="flex items-center gap-1.5">
           <button
             onClick={onClear}
-            className="p-1.5 sm:px-3 sm:py-1.5 rounded-full font-mono text-xs font-bold text-rose-700 bg-rose-100 hover:bg-rose-200 border-2 border-[#120E16] transition"
+            className="px-2.5 sm:px-3 py-1.5 rounded-full font-mono text-xs font-bold text-rose-700 bg-rose-100 hover:bg-rose-200 border-2 border-[#120E16] transition flex items-center gap-1.5 shrink-0 shadow-[1.5px_1.5px_0_#120E16]"
             title="Reset Canvas"
           >
             <Trash2 className="w-3.5 h-3.5" />
-            <span className="hidden md:inline ml-1">Reset</span>
+            <span className="hidden sm:inline">Reset</span>
           </button>
           <button
             onClick={onExport}
