@@ -215,8 +215,8 @@ export default function AssetBrowser({ onAddLayer }) {
               </div>
             </div>
 
-            {/* Background Wallpapers Grid */}
-            <div className="grid grid-cols-2 gap-2.5 pt-1">
+            {/* Background Wallpapers Grid (Dense Portrait Aspect Ratio) */}
+            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1">
               {filteredBackgrounds.map((bg, idx) => (
                 <button
                   key={`bg_${bg.heroValue}_${bg.bgNum}_${idx}`}
@@ -228,9 +228,9 @@ export default function AssetBrowser({ onAddLayer }) {
                       subType: 'bg'
                     })
                   }
-                  className="glass-card rounded-xl p-1.5 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.02] transition-all"
+                  className="glass-card rounded-lg p-1 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.03] transition-all"
                 >
-                  <div className="w-full aspect-video rounded-lg overflow-hidden bg-black/50 relative mb-1.5">
+                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-brand-border/40">
                     <img
                       src={bg.thumbSrc}
                       alt={`${bg.heroName} BG ${bg.bgNum}`}
@@ -238,26 +238,24 @@ export default function AssetBrowser({ onAddLayer }) {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                      <span className="text-[10px] text-cyan-300 font-semibold flex items-center gap-1">
-                        <Plus className="w-3 h-3" /> Add Background
+                      <span className="text-[9px] text-cyan-300 font-semibold flex items-center gap-0.5">
+                        <Plus className="w-2.5 h-2.5" /> Add
                       </span>
                     </div>
                   </div>
-                  <div className="w-full flex items-center justify-between px-1">
-                    <span className="text-[11px] font-semibold text-slate-200 capitalize truncate group-hover:text-cyan-300">
-                      {bg.heroName}
-                    </span>
-                    <span className="text-[9px] text-slate-400 uppercase bg-brand-bg px-1.5 py-0.5 rounded border border-brand-border/60">
-                      BG #{bg.bgNum}
-                    </span>
-                  </div>
+                  <span className="text-[10px] font-semibold text-slate-200 capitalize truncate w-full text-center group-hover:text-cyan-300">
+                    {bg.heroName}
+                  </span>
+                  <span className="text-[8px] text-slate-400 uppercase">
+                    BG #{bg.bgNum}
+                  </span>
                 </button>
               ))}
             </div>
           </div>
         )}
 
-        {/* TAB 2: HERO SKINS (PORTRAIT PREVIEW) */}
+        {/* TAB 2: HERO SKINS (PORTRAIT PREVIEW DENSE GRID) */}
         {activeTab === 'skins' && (
           <div className="space-y-3">
             {/* Search & Role Filters */}
@@ -296,8 +294,8 @@ export default function AssetBrowser({ onAddLayer }) {
               </div>
             </div>
 
-            {/* Hero Skins Grid (Strict Portrait Aspect Ratio) */}
-            <div className="grid grid-cols-3 sm:grid-cols-3 gap-2.5 pt-1">
+            {/* Hero Skins Grid (Dense Portrait Aspect Ratio) */}
+            <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1">
               {filteredSkins.map((skin, idx) => (
                 <button
                   key={`skin_${skin.heroValue}_${skin.skinNum}_${idx}`}
@@ -309,10 +307,9 @@ export default function AssetBrowser({ onAddLayer }) {
                       subType: 'skins'
                     })
                   }
-                  className="glass-card rounded-xl p-1.5 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.02] transition-all"
+                  className="glass-card rounded-lg p-1 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.03] transition-all"
                 >
-                  {/* Portrait Thumbnail Container (3:4 aspect ratio) */}
-                  <div className="w-full aspect-[3/4] rounded-lg overflow-hidden bg-black/60 relative mb-1.5 border border-brand-border/40">
+                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-brand-border/40">
                     <img
                       src={skin.thumbSrc}
                       alt={`${skin.heroName} Skin ${skin.skinNum}`}
@@ -320,15 +317,15 @@ export default function AssetBrowser({ onAddLayer }) {
                       loading="lazy"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                      <span className="text-[10px] text-cyan-300 font-semibold flex items-center gap-1">
-                        <Plus className="w-3 h-3" /> Add Hero
+                      <span className="text-[9px] text-cyan-300 font-semibold flex items-center gap-0.5">
+                        <Plus className="w-2.5 h-2.5" /> Add
                       </span>
                     </div>
                   </div>
-                  <span className="text-[11px] font-semibold text-slate-200 capitalize truncate w-full text-center group-hover:text-cyan-300">
+                  <span className="text-[10px] font-semibold text-slate-200 capitalize truncate w-full text-center group-hover:text-cyan-300">
                     {skin.heroName}
                   </span>
-                  <span className="text-[9px] text-slate-400">
+                  <span className="text-[8px] text-slate-400 uppercase">
                     Skin #{skin.skinNum}
                   </span>
                 </button>
