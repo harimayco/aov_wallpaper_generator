@@ -4,7 +4,7 @@ import 'bootstrap';
 import 'gasparesganga-jquery-loading-overlay';
 
 
-const garena_wp = 'https://cdngarenanow-a.akamaihd.net/webmain/static/resource/wallpaper/';
+const garena_wp = 'images/';
 const garena_cdn = garena_wp + 'hero/';
 const wp_data = [
     {
