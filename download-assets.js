@@ -2,18 +2,17 @@ const fs = require('fs');
 const path = require('path');
 const https = require('https');
 
-const BASE_URL = 'https://cdngarenanow-a.akamaihd.net/webmain/static/resource/wallpaper/';
-const APP_JS_PATH = path.join(__dirname, 'js', 'app.js');
-const IMAGES_DIR = path.join(__dirname, 'images');
+const APP_DATA_PATH = path.join(__dirname, 'src', 'data', 'heroes.js');
+const IMAGES_DIR = path.join(__dirname, 'public', 'images');
 const CONCURRENCY_LIMIT = 15;
 const MAX_RETRIES = 3;
 
-// Extract wp_data from js/app.js
+// Extract wp_data from src/data/heroes.js
 function getWpData() {
-    const content = fs.readFileSync(APP_JS_PATH, 'utf8');
-    const match = content.match(/const wp_data = (\[[\s\S]*?\]);/);
+    const content = fs.readFileSync(APP_DATA_PATH, 'utf8');
+    const match = content.match(/export const HEROES_DATA = (\[[\s\S]*?\]);/);
     if (!match) {
-        throw new Error('Could not parse wp_data from js/app.js');
+        throw new Error('Could not parse HEROES_DATA from src/data/heroes.js');
     }
     return JSON.parse(match[1]);
 }

@@ -1,23 +1,29 @@
 {
   "name": "aov_wallpaper_generator",
-  "version": "1.0.0",
-  "description": "a simple tool to make cool aov HD wallpaper only with browser",
-  "main": "index.js",
+  "private": true,
+  "version": "2.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
   "dependencies": {
-    "bootstrap": "^4.3.1",
-    "gasparesganga-jquery-loading-overlay": "^2.1.7",
-    "jquery": "^3.6.0",
-    "konva": "^3.2.3",
-    "popper.js": "^1.14.7"
+    "canvas-confetti": "^1.9.4",
+    "konva": "^9.3.18",
+    "lucide-react": "^0.475.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-konva": "^18.2.14"
   },
   "devDependencies": {
-    "webpack": "^5.64.4",
-    "webpack-cli": "^4.9.1"
-  },
-  "scripts": {
-    "build": "webpack --mode=production",
-    "dev": "webpack --watch --mode=development",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.5.2",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.1.0"
   },
   "repository": {
     "type": "git",
@@ -29,9 +35,5 @@
     "generator"
   ],
   "author": "Rendy Harimayco",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/harimayco/harimayco.github.io/issues"
-  },
-  "homepage": "https://github.com/harimayco/harimayco.github.io#readme"
+  "license": "MIT"
 }
