@@ -13,13 +13,11 @@ function URLImage({ layer, isSelected, onSelect, onChange, stageWidth, stageHeig
       if (!isMounted) return;
       setImageObj(img);
       
-      // Auto-fit initial placement if width/height not set
       if (!layer.initialized) {
         let renderWidth = img.width;
         let renderHeight = img.height;
 
         if (layer.subType === 'bg') {
-          // Fit background to height/width
           const imageRatio = img.width / img.height;
           const stageRatio = stageWidth / stageHeight;
           if (imageRatio < stageRatio) {
@@ -109,10 +107,10 @@ function EditableText({ layer, isSelected, onSelect, onChange, stageWidth, stage
       x={layer.x}
       y={layer.y}
       fontSize={layer.fontSize || 36}
-      fontFamily={layer.fontFamily || 'Staatliches'}
-      fill={layer.fill || '#00f0ff'}
-      stroke={layer.stroke || '#000000'}
-      strokeWidth={layer.strokeWidth ?? 1.5}
+      fontFamily={layer.fontFamily || 'Fredoka'}
+      fill={layer.fill || '#00E5A3'}
+      stroke={layer.stroke || '#120E16'}
+      strokeWidth={layer.strokeWidth ?? 2}
       align={layer.align || 'center'}
       scaleX={layer.scaleX || 1}
       scaleY={layer.scaleY || 1}
@@ -155,7 +153,6 @@ export default function CanvasStudio({
   const containerRef = useRef();
   const [scale, setScale] = useState(1);
 
-  // Responsive scaling to fit container cleanly
   useEffect(() => {
     const handleResize = () => {
       if (!containerRef.current) return;
@@ -165,9 +162,8 @@ export default function CanvasStudio({
       const scaleW = containerWidth / dimensions.width;
       const scaleH = containerHeight / dimensions.height;
       
-      // Choose fit scale maxed at 1
       const fitScale = Math.min(scaleW, scaleH, 1);
-      setScale(Math.max(fitScale, 0.3));
+      setScale(Math.max(fitScale, 0.25));
     };
 
     handleResize();
@@ -175,7 +171,6 @@ export default function CanvasStudio({
     return () => window.removeEventListener('resize', handleResize);
   }, [dimensions]);
 
-  // Update transformer target node
   useEffect(() => {
     if (!trRef.current) return;
     if (selectedId) {
@@ -193,7 +188,6 @@ export default function CanvasStudio({
   }, [selectedId, layers]);
 
   const handleStageClick = (e) => {
-    // Deselect if clicked on empty stage background
     if (e.target === e.target.getStage()) {
       setSelectedId(null);
     }
@@ -205,20 +199,20 @@ export default function CanvasStudio({
   return (
     <div
       ref={containerRef}
-      className="w-full h-full flex items-center justify-center p-4 bg-[#03050c]/80 rounded-2xl border border-brand-border/40 relative overflow-hidden shadow-2xl"
+      className="w-full h-full flex items-center justify-center p-3 sm:p-4 arcade-panel-dark rounded-2xl relative overflow-hidden"
     >
-      {/* Dynamic Background Pattern */}
+      {/* Dynamic Dots Background Pattern */}
       <div 
-        className="absolute inset-0 opacity-20 pointer-events-none"
+        className="absolute inset-0 opacity-15 pointer-events-none"
         style={{
-          backgroundImage: `radial-gradient(#1e294b 1px, transparent 1px)`,
-          backgroundSize: '20px 20px'
+          backgroundImage: `radial-gradient(#7C3AED 1.5px, transparent 1.5px)`,
+          backgroundSize: '24px 24px'
         }}
       />
 
-      {/* Canvas Wrapper */}
+      {/* Canvas Frame */}
       <div
-        className="relative shadow-2xl rounded-lg overflow-hidden border border-cyan-500/30 ring-1 ring-cyan-500/20 transition-all duration-300"
+        className="relative rounded-xl overflow-hidden border-2 border-[#120E16] shadow-[4px_4px_0_#120E16] transition-all duration-300"
         style={{
           width: stageWidth,
           height: stageHeight,
@@ -256,32 +250,33 @@ export default function CanvasStudio({
             <Transformer
               ref={trRef}
               boundBoxFunc={(oldBox, newBox) => {
-                // Minimum dimension constraints
                 if (Math.abs(newBox.width) < 10 || Math.abs(newBox.height) < 10) {
                   return oldBox;
                 }
                 return newBox;
               }}
-              anchorStroke="#00f0ff"
-              anchorFill="#0d1326"
+              anchorStroke="#00E5A3"
+              anchorFill="#120E16"
               anchorSize={10}
-              anchorCornerRadius={3}
-              borderStroke="#00f0ff"
+              anchorCornerRadius={2}
+              borderStroke="#00E5A3"
               borderDash={[4, 4]}
               rotateEnabled={true}
             />
           </Layer>
         </Stage>
 
-        {/* Empty Canvas Placeholder overlay */}
+        {/* Empty Canvas Overlay */}
         {layers.length === 0 && (
-          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none bg-brand-bg/60 backdrop-blur-xs">
-            <div className="w-16 h-16 rounded-full bg-cyan-500/10 border border-cyan-500/30 flex items-center justify-center mb-3 animate-bounce">
-              <span className="text-2xl">✨</span>
+          <div className="absolute inset-0 flex flex-col items-center justify-center p-6 text-center pointer-events-none bg-[#1A1528]/80 backdrop-blur-xs">
+            <div className="w-14 h-14 rounded-2xl bg-[#7C3AED] border-2 border-[#120E16] shadow-[3px_3px_0_#120E16] flex items-center justify-center mb-3 animate-bounce text-white">
+              <span className="text-2xl">🎮</span>
             </div>
-            <h3 className="font-heading text-xl text-cyan-300 tracking-wide">CANVAS IS READY</h3>
-            <p className="text-xs text-slate-400 max-w-xs mt-1">
-              Select a Hero Skin, Background Wallpaper, or Badge from the panel to start creating your wallpaper.
+            <h3 className="font-display text-xl text-[#00E5A3] uppercase tracking-wider">
+              CANVAS READY!
+            </h3>
+            <p className="font-mono text-xs text-white/80 max-w-xs mt-1">
+              Select a Wallpaper, Hero Skin, or Badge from the panel to start creating.
             </p>
           </div>
         )}

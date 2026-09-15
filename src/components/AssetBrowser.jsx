@@ -13,23 +13,22 @@ const ROLE_TAGS = [
   { id: 'support', label: 'Support', icon: HeartHandshake },
 ];
 
-export default function AssetBrowser({ onAddLayer }) {
-  const [activeTab, setActiveTab] = useState('backgrounds'); // 'backgrounds' | 'skins' | 'badges' | 'text' | 'upload'
+export default function AssetBrowser({ onAddLayer, activeTab, setActiveTab }) {
   const [selectedRole, setSelectedRole] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
   // Text Form State
   const [textInput, setTextInput] = useState('ARENA OF VALOR');
-  const [textColor, setTextColor] = useState('#00f0ff');
-  const [textFont, setTextFont] = useState('Staatliches');
+  const [textColor, setTextColor] = useState('#00E5A3');
+  const [textFont, setTextFont] = useState('Fredoka');
   const [textAlign, setTextAlign] = useState('center');
   const [enableStroke, setEnableStroke] = useState(true);
-  const [strokeColor, setStrokeColor] = useState('#000000');
+  const [strokeColor, setStrokeColor] = useState('#120E16');
 
   // Dynamically load Google Font on change
   const handleFontChange = (fontName) => {
     setTextFont(fontName);
-    if (fontName !== 'Impact' && fontName !== 'Arial') {
+    if (fontName !== 'Impact' && fontName !== 'Arial' && fontName !== 'Fredoka') {
       const linkId = 'font-' + fontName.replace(/\s+/g, '+');
       if (!document.getElementById(linkId)) {
         const link = document.createElement('link');
@@ -114,15 +113,15 @@ export default function AssetBrowser({ onAddLayer }) {
   };
 
   return (
-    <div className="w-full h-full flex flex-col glass-panel rounded-2xl border border-brand-border/60 overflow-hidden shadow-2xl">
-      {/* Navigation Tabs Header */}
-      <div className="flex items-center justify-between border-b border-brand-border/80 bg-brand-card/90 p-1.5 gap-1">
+    <div className="w-full h-full flex flex-col bg-[#1A1528] rounded-2xl border-2 border-[#120E16] shadow-[4px_4px_0_#120E16] overflow-hidden">
+      {/* Header Tabs Navigation */}
+      <div className="flex items-center justify-between border-b-2 border-[#120E16] bg-[#211B33] p-1.5 gap-1 overflow-x-auto">
         <button
           onClick={() => setActiveTab('backgrounds')}
-          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition ${
             activeTab === 'backgrounds'
-              ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
           }`}
         >
           <ImageIcon className="w-3.5 h-3.5" />
@@ -130,21 +129,21 @@ export default function AssetBrowser({ onAddLayer }) {
         </button>
         <button
           onClick={() => setActiveTab('skins')}
-          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition ${
             activeTab === 'skins'
-              ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
           }`}
         >
           <User className="w-3.5 h-3.5" />
-          <span>Hero Skins</span>
+          <span>Skins</span>
         </button>
         <button
           onClick={() => setActiveTab('badges')}
-          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition ${
             activeTab === 'badges'
-              ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
           }`}
         >
           <Award className="w-3.5 h-3.5" />
@@ -152,10 +151,10 @@ export default function AssetBrowser({ onAddLayer }) {
         </button>
         <button
           onClick={() => setActiveTab('text')}
-          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition ${
             activeTab === 'text'
-              ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
           }`}
         >
           <Type className="w-3.5 h-3.5" />
@@ -163,10 +162,10 @@ export default function AssetBrowser({ onAddLayer }) {
         </button>
         <button
           onClick={() => setActiveTab('upload')}
-          className={`flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-xl text-xs font-semibold transition ${
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition ${
             activeTab === 'upload'
-              ? 'bg-gradient-to-r from-purple-500/20 to-cyan-500/20 text-cyan-300 border border-cyan-500/30'
-              : 'text-slate-400 hover:text-slate-200 hover:bg-white/5'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
           }`}
         >
           <Upload className="w-3.5 h-3.5" />
@@ -174,25 +173,25 @@ export default function AssetBrowser({ onAddLayer }) {
         </button>
       </div>
 
-      {/* Tab Content Body */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4">
+      {/* Content Body */}
+      <div className="flex-1 overflow-y-auto p-3 sm:p-4 space-y-4 font-mono">
         {/* TAB 1: BACKGROUND WALLPAPERS */}
         {activeTab === 'backgrounds' && (
           <div className="space-y-3">
             {/* Search & Role Filters */}
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               <div className="relative">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <Search className="w-4 h-4 text-white/50 absolute left-3 top-2.5" />
                 <input
                   type="text"
-                  placeholder="Search background wallpaper by hero..."
+                  placeholder="Search wallpaper by hero..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-brand-bg/80 border border-brand-border/80 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/40"
+                  className="w-full bg-[#211B33] border-2 border-[#120E16] rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-[#00E5A3]"
                 />
               </div>
 
-              {/* Role Filter Pills */}
+              {/* Role Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
                 {ROLE_TAGS.map((tag) => {
                   const Icon = tag.icon;
@@ -201,10 +200,10 @@ export default function AssetBrowser({ onAddLayer }) {
                     <button
                       key={tag.id}
                       onClick={() => setSelectedRole(tag.id)}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap transition ${
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold transition border-2 border-[#120E16] whitespace-nowrap ${
                         isActive
-                          ? 'bg-cyan-500 text-black font-semibold'
-                          : 'bg-brand-card text-slate-400 hover:text-white border border-brand-border/60'
+                          ? 'bg-[#00E5A3] text-[#120E16] shadow-[2px_2px_0_#120E16]'
+                          : 'bg-[#211B33] text-white/70 hover:text-white'
                       }`}
                     >
                       <Icon className="w-3 h-3" />
@@ -215,7 +214,7 @@ export default function AssetBrowser({ onAddLayer }) {
               </div>
             </div>
 
-            {/* Background Wallpapers Grid (Dense Portrait Aspect Ratio) */}
+            {/* Background Wallpapers Grid (Dense 4-col/5-col portrait) */}
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1">
               {filteredBackgrounds.map((bg, idx) => (
                 <button
@@ -228,25 +227,25 @@ export default function AssetBrowser({ onAddLayer }) {
                       subType: 'bg'
                     })
                   }
-                  className="glass-card rounded-lg p-1 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.03] transition-all"
+                  className="bg-[#211B33] border-2 border-[#120E16] rounded-lg p-1 flex flex-col items-center group hover:border-[#00E5A3] hover:-translate-y-0.5 transition-all shadow-[2px_2px_0_#120E16]"
                 >
-                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-brand-border/40">
+                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-[#120E16]">
                     <img
                       src={bg.thumbSrc}
                       alt={`${bg.heroName} BG ${bg.bgNum}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                      <span className="text-[9px] text-cyan-300 font-semibold flex items-center gap-0.5">
+                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
+                      <span className="text-[9px] text-[#00E5A3] font-bold flex items-center gap-0.5">
                         <Plus className="w-2.5 h-2.5" /> Add
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-semibold text-slate-200 capitalize truncate w-full text-center group-hover:text-cyan-300">
+                  <span className="text-[10px] font-bold text-white capitalize truncate w-full text-center group-hover:text-[#00E5A3]">
                     {bg.heroName}
                   </span>
-                  <span className="text-[8px] text-slate-400 uppercase">
+                  <span className="text-[8px] text-white/60 uppercase">
                     BG #{bg.bgNum}
                   </span>
                 </button>
@@ -255,23 +254,23 @@ export default function AssetBrowser({ onAddLayer }) {
           </div>
         )}
 
-        {/* TAB 2: HERO SKINS (PORTRAIT PREVIEW DENSE GRID) */}
+        {/* TAB 2: HERO SKINS */}
         {activeTab === 'skins' && (
           <div className="space-y-3">
             {/* Search & Role Filters */}
-            <div className="space-y-2.5">
+            <div className="space-y-2">
               <div className="relative">
-                <Search className="w-4 h-4 text-slate-400 absolute left-3 top-2.5" />
+                <Search className="w-4 h-4 text-white/50 absolute left-3 top-2.5" />
                 <input
                   type="text"
                   placeholder="Search hero skins..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full bg-brand-bg/80 border border-brand-border/80 rounded-xl pl-9 pr-3 py-2 text-xs text-slate-200 placeholder-slate-500 focus:outline-none focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/40"
+                  className="w-full bg-[#211B33] border-2 border-[#120E16] rounded-xl pl-9 pr-3 py-1.5 text-xs text-white placeholder-white/40 focus:outline-none focus:border-[#00E5A3]"
                 />
               </div>
 
-              {/* Role Filter Pills */}
+              {/* Role Pills */}
               <div className="flex items-center gap-1.5 overflow-x-auto pb-1 scrollbar-none">
                 {ROLE_TAGS.map((tag) => {
                   const Icon = tag.icon;
@@ -280,10 +279,10 @@ export default function AssetBrowser({ onAddLayer }) {
                     <button
                       key={tag.id}
                       onClick={() => setSelectedRole(tag.id)}
-                      className={`flex items-center gap-1 px-2.5 py-1 rounded-lg text-[11px] font-medium whitespace-nowrap transition ${
+                      className={`flex items-center gap-1 px-2.5 py-1 rounded-full text-[11px] font-bold transition border-2 border-[#120E16] whitespace-nowrap ${
                         isActive
-                          ? 'bg-cyan-500 text-black font-semibold'
-                          : 'bg-brand-card text-slate-400 hover:text-white border border-brand-border/60'
+                          ? 'bg-[#00E5A3] text-[#120E16] shadow-[2px_2px_0_#120E16]'
+                          : 'bg-[#211B33] text-white/70 hover:text-white'
                       }`}
                     >
                       <Icon className="w-3 h-3" />
@@ -294,7 +293,7 @@ export default function AssetBrowser({ onAddLayer }) {
               </div>
             </div>
 
-            {/* Hero Skins Grid (Dense Portrait Aspect Ratio) */}
+            {/* Hero Skins Grid (Dense 4-col/5-col portrait) */}
             <div className="grid grid-cols-4 sm:grid-cols-5 gap-2 pt-1">
               {filteredSkins.map((skin, idx) => (
                 <button
@@ -307,25 +306,25 @@ export default function AssetBrowser({ onAddLayer }) {
                       subType: 'skins'
                     })
                   }
-                  className="glass-card rounded-lg p-1 flex flex-col items-center group hover:border-cyan-400/80 hover:scale-[1.03] transition-all"
+                  className="bg-[#211B33] border-2 border-[#120E16] rounded-lg p-1 flex flex-col items-center group hover:border-[#00E5A3] hover:-translate-y-0.5 transition-all shadow-[2px_2px_0_#120E16]"
                 >
-                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-brand-border/40">
+                  <div className="w-full aspect-[3/4] rounded-md overflow-hidden bg-black/60 relative mb-1 border border-[#120E16]">
                     <img
                       src={skin.thumbSrc}
                       alt={`${skin.heroName} Skin ${skin.skinNum}`}
                       className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                       loading="lazy"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
-                      <span className="text-[9px] text-cyan-300 font-semibold flex items-center gap-0.5">
+                    <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity flex items-end justify-center pb-1">
+                      <span className="text-[9px] text-[#00E5A3] font-bold flex items-center gap-0.5">
                         <Plus className="w-2.5 h-2.5" /> Add
                       </span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-semibold text-slate-200 capitalize truncate w-full text-center group-hover:text-cyan-300">
+                  <span className="text-[10px] font-bold text-white capitalize truncate w-full text-center group-hover:text-[#00E5A3]">
                     {skin.heroName}
                   </span>
-                  <span className="text-[8px] text-slate-400 uppercase">
+                  <span className="text-[8px] text-white/60 uppercase">
                     Skin #{skin.skinNum}
                   </span>
                 </button>
@@ -338,8 +337,8 @@ export default function AssetBrowser({ onAddLayer }) {
         {activeTab === 'badges' && (
           <div className="space-y-4">
             <div>
-              <h4 className="text-xs font-semibold text-cyan-300 uppercase tracking-wider mb-2">
-                Title Overlays (TW Frame)
+              <h4 className="font-display text-sm text-[#00E5A3] uppercase tracking-wider mb-2">
+                TITLE OVERLAYS (TW FRAME)
               </h4>
               <div className="grid grid-cols-2 gap-2">
                 {Array.from({ length: 14 }).map((_, idx) => {
@@ -355,15 +354,15 @@ export default function AssetBrowser({ onAddLayer }) {
                           subType: 'title'
                         })
                       }
-                      className="glass-card rounded-xl p-2 flex flex-col items-center group hover:border-cyan-400"
+                      className="bg-[#211B33] border-2 border-[#120E16] rounded-xl p-2 flex flex-col items-center group hover:border-[#00E5A3] shadow-[2px_2px_0_#120E16]"
                     >
                       <img
                         src={`images/tw-title-thumb/${num}.jpg`}
                         alt={`Title ${num}`}
-                        className="w-full h-12 object-contain group-hover:scale-105 transition"
+                        className="w-full h-10 object-contain group-hover:scale-105 transition"
                         loading="lazy"
                       />
-                      <span className="text-[10px] text-slate-300 mt-1">Title {num}</span>
+                      <span className="text-[10px] text-white/80 mt-1">Title #{num}</span>
                     </button>
                   );
                 })}
@@ -371,8 +370,8 @@ export default function AssetBrowser({ onAddLayer }) {
             </div>
 
             <div>
-              <h4 className="text-xs font-semibold text-amber-300 uppercase tracking-wider mb-2">
-                Achievement & Game Badges
+              <h4 className="font-display text-sm text-[#00E5A3] uppercase tracking-wider mb-2">
+                GAME BADGES
               </h4>
               <div className="grid grid-cols-3 gap-2">
                 {CUSTOM_UTILS.map((item) => (
@@ -386,15 +385,15 @@ export default function AssetBrowser({ onAddLayer }) {
                         subType: 'util'
                       })
                     }
-                    className="glass-card rounded-xl p-2 flex flex-col items-center group hover:border-amber-400"
+                    className="bg-[#211B33] border-2 border-[#120E16] rounded-xl p-2 flex flex-col items-center group hover:border-[#00E5A3] shadow-[2px_2px_0_#120E16]"
                   >
                     <img
                       src={`images/utils-thumb/${item}.jpg`}
                       alt={item}
-                      className="w-full h-12 object-contain group-hover:scale-110 transition"
+                      className="w-full h-10 object-contain group-hover:scale-110 transition"
                       loading="lazy"
                     />
-                    <span className="text-[9px] text-slate-300 uppercase mt-1 truncate w-full text-center">
+                    <span className="text-[9px] text-white/80 uppercase mt-1 truncate w-full text-center">
                       {item.replace('-', ' ')}
                     </span>
                   </button>
@@ -406,60 +405,61 @@ export default function AssetBrowser({ onAddLayer }) {
 
         {/* TAB 4: TEXT STUDIO TAB */}
         {activeTab === 'text' && (
-          <div className="space-y-4">
+          <div className="space-y-3.5">
             <div>
-              <label className="text-xs font-medium text-slate-300 block mb-1">Text Content</label>
+              <label className="text-xs font-bold text-white block mb-1">Text Content</label>
               <input
                 type="text"
                 value={textInput}
                 onChange={(e) => setTextInput(e.target.value)}
                 placeholder="Enter text..."
-                className="w-full bg-brand-bg/80 border border-brand-border/80 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-500/60"
+                className="w-full bg-[#211B33] border-2 border-[#120E16] rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#00E5A3]"
               />
             </div>
 
-            <div className="grid grid-cols-2 gap-3">
+            <div className="grid grid-cols-2 gap-2.5">
               <div>
-                <label className="text-xs font-medium text-slate-300 block mb-1">Font Color</label>
+                <label className="text-xs font-bold text-white block mb-1">Fill Color</label>
                 <input
                   type="color"
                   value={textColor}
                   onChange={(e) => setTextColor(e.target.value)}
-                  className="w-full h-9 rounded-xl bg-brand-bg border border-brand-border/80 cursor-pointer p-1"
+                  className="w-full h-8 rounded-xl bg-[#211B33] border-2 border-[#120E16] cursor-pointer p-0.5"
                 />
               </div>
 
               <div>
-                <label className="text-xs font-medium text-slate-300 block mb-1">Stroke Color</label>
+                <label className="text-xs font-bold text-white block mb-1">Stroke Color</label>
                 <div className="flex items-center gap-2">
                   <input
                     type="color"
                     value={strokeColor}
                     onChange={(e) => setStrokeColor(e.target.value)}
                     disabled={!enableStroke}
-                    className="w-full h-9 rounded-xl bg-brand-bg border border-brand-border/80 cursor-pointer p-1 disabled:opacity-30"
+                    className="w-full h-8 rounded-xl bg-[#211B33] border-2 border-[#120E16] cursor-pointer p-0.5 disabled:opacity-30"
                   />
                   <input
                     type="checkbox"
                     checked={enableStroke}
                     onChange={(e) => setEnableStroke(e.target.checked)}
-                    className="w-4 h-4 accent-cyan-500 rounded"
+                    className="w-4 h-4 accent-[#00E5A3] rounded"
                   />
                 </div>
               </div>
             </div>
 
             <div>
-              <label className="text-xs font-medium text-slate-300 block mb-1">Font Family</label>
+              <label className="text-xs font-bold text-white block mb-1">Font Family</label>
               <select
                 value={textFont}
                 onChange={(e) => handleFontChange(e.target.value)}
-                className="w-full bg-brand-bg/80 border border-brand-border/80 rounded-xl px-3 py-2 text-xs text-slate-200 focus:outline-none focus:border-cyan-500/60"
+                className="w-full bg-[#211B33] border-2 border-[#120E16] rounded-xl px-3 py-1.5 text-xs text-white focus:outline-none focus:border-[#00E5A3]"
               >
-                <option value="Staatliches">Staatliches (Default)</option>
+                <option value="Fredoka">Fredoka (Default)</option>
+                <option value="Staatliches">Staatliches</option>
                 <option value="Impact">Impact</option>
                 <option value="Arial">Arial</option>
-                {FONTS_LIST.filter((f) => f !== 'Staatliches').map((f) => (
+                {FONTS_LIST.filter((f) => f !== 'Staatliches' && f !== 'Fredoka').map((f) => (
                   <option key={f} value={f}>
                     {f}
                   </option>
@@ -468,16 +468,16 @@ export default function AssetBrowser({ onAddLayer }) {
             </div>
 
             <div>
-              <label className="text-xs font-medium text-slate-300 block mb-1">Text Alignment</label>
+              <label className="text-xs font-bold text-white block mb-1">Alignment</label>
               <div className="grid grid-cols-3 gap-2">
                 {['left', 'center', 'right'].map((align) => (
                   <button
                     key={align}
                     onClick={() => setTextAlign(align)}
-                    className={`py-1.5 rounded-lg text-xs capitalize transition ${
+                    className={`py-1 rounded-lg text-xs capitalize border-2 border-[#120E16] transition ${
                       textAlign === align
-                        ? 'bg-cyan-500 text-black font-semibold'
-                        : 'bg-brand-card text-slate-400 hover:text-white'
+                        ? 'bg-[#00E5A3] text-[#120E16] font-bold shadow-[2px_2px_0_#120E16]'
+                        : 'bg-[#211B33] text-white/70 hover:text-white'
                     }`}
                   >
                     {align}
@@ -487,8 +487,8 @@ export default function AssetBrowser({ onAddLayer }) {
             </div>
 
             {/* Live Text Preview Box */}
-            <div className="p-3 bg-black/40 rounded-xl border border-brand-border/60 text-center">
-              <span className="text-[10px] text-slate-500 uppercase block mb-1">Live Preview</span>
+            <div className="p-3 bg-[#211B33] rounded-xl border-2 border-[#120E16] text-center shadow-[2px_2px_0_#120E16]">
+              <span className="text-[9px] text-white/50 uppercase block mb-1">Live Preview</span>
               <p
                 style={{
                   fontFamily: textFont,
@@ -496,7 +496,7 @@ export default function AssetBrowser({ onAddLayer }) {
                   WebkitTextStroke: enableStroke ? `1.5px ${strokeColor}` : 'none',
                   textAlign,
                 }}
-                className="text-2xl truncate"
+                className="text-2xl truncate font-bold"
               >
                 {textInput || 'Preview Text'}
               </p>
@@ -510,11 +510,11 @@ export default function AssetBrowser({ onAddLayer }) {
                   fill: textColor,
                   fontFamily: textFont,
                   stroke: enableStroke ? strokeColor : null,
-                  strokeWidth: enableStroke ? 1.5 : 0,
+                  strokeWidth: enableStroke ? 2 : 0,
                   align: textAlign
                 })
               }
-              className="w-full py-2.5 rounded-xl font-heading text-sm text-black bg-gradient-to-r from-cyan-400 to-blue-400 hover:from-cyan-300 hover:to-blue-300 shadow-lg shadow-cyan-500/20 font-bold transition flex items-center justify-center gap-2"
+              className="arcade-btn-mint w-full py-2.5 rounded-xl text-xs flex items-center justify-center gap-2"
             >
               <Plus className="w-4 h-4" />
               <span>ADD TEXT TO CANVAS</span>
@@ -522,17 +522,17 @@ export default function AssetBrowser({ onAddLayer }) {
           </div>
         )}
 
-        {/* TAB 5: CUSTOM UPLOAD TAB */}
+        {/* TAB 5: CUSTOM UPLOAD */}
         {activeTab === 'upload' && (
           <div className="space-y-4 text-center py-6">
-            <div className="border-2 border-dashed border-brand-border/80 hover:border-cyan-500/60 rounded-2xl p-6 transition flex flex-col items-center justify-center bg-brand-bg/40">
-              <Upload className="w-10 h-10 text-cyan-400 mb-2 animate-bounce" />
-              <h4 className="text-sm font-semibold text-slate-200 mb-1">Upload Custom Image</h4>
-              <p className="text-xs text-slate-400 max-w-xs mb-4">
-                Add your own PNG cutouts, watermarks, or personal photos to the wallpaper canvas.
+            <div className="border-2 border-dashed border-[#120E16] bg-[#211B33] rounded-2xl p-6 transition flex flex-col items-center justify-center shadow-[3px_3px_0_#120E16]">
+              <Upload className="w-10 h-10 text-[#00E5A3] mb-2 animate-bounce" />
+              <h4 className="font-display text-base text-white mb-1">UPLOAD CUSTOM IMAGE</h4>
+              <p className="text-xs text-white/70 max-w-xs mb-4">
+                Add your own PNG cutouts, logos, or personal photos to the canvas.
               </p>
-              <label className="px-4 py-2 rounded-xl text-xs font-semibold bg-cyan-500 text-black cursor-pointer hover:bg-cyan-400 transition shadow-md">
-                Browse File
+              <label className="arcade-btn-mint px-4 py-2 rounded-full text-xs cursor-pointer inline-block">
+                BROWSE FILE
                 <input
                   type="file"
                   accept="image/*"

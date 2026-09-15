@@ -2,68 +2,121 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@import url('https://fonts.googleapis.com/css2?family=Staatliches&family=Outfit:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&family=Fredoka:wght@600;700&display=swap');
 
 :root {
-  font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  color-scheme: dark;
+  font-family: 'Courier Prime', monospace;
+  color-scheme: light dark;
 }
 
 body {
   margin: 0;
   padding: 0;
-  background-color: #050814;
-  color: #f1f5f9;
+  background-color: #F4F0FF;
+  color: #120E16;
   min-height: 100vh;
-  background-image: 
-    radial-gradient(at 0% 0%, rgba(112, 0, 255, 0.15) 0px, transparent 50%),
-    radial-gradient(at 100% 0%, rgba(0, 240, 255, 0.12) 0px, transparent 50%),
-    radial-gradient(at 50% 100%, rgba(229, 169, 59, 0.08) 0px, transparent 50%);
-  background-attachment: fixed;
-  overflow-x: hidden;
+}
+
+/* Custom Comic Book Display Text Stroke */
+.display-stroke {
+  -webkit-text-stroke: 2.5px #120e16;
+  text-shadow:
+    3px 3px 0 #120e16,
+    -1px -1px 0 #120e16,
+    1px -1px 0 #120e16,
+    -1px 1px 0 #120e16;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 8px;
+  height: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0d1e;
+  background: #1A1528;
 }
 ::-webkit-scrollbar-thumb {
-  background: #1e294b;
-  border-radius: 9999px;
+  background: #7C3AED;
+  border-radius: 4px;
+  border: 2px solid #120E16;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #00f0ff;
+  background: #00E5A3;
 }
 
-/* Glassmorphic utilities */
-.glass-panel {
-  background: rgba(13, 19, 38, 0.75);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+/* Retro Arcade Flat Card Utilities */
+.arcade-card {
+  background: #FFFFFF;
+  border: 2px solid #120E16;
+  box-shadow: 4px 4px 0 #120E16;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.glass-card {
-  background: rgba(20, 28, 56, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  transition: all 0.2s ease-in-out;
+.arcade-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0 #120E16;
 }
 
-.glass-card:hover {
-  background: rgba(28, 39, 77, 0.8);
-  border-color: rgba(0, 240, 255, 0.4);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+.arcade-panel-dark {
+  background: #1A1528;
+  border: 2px solid #120E16;
+  box-shadow: 4px 4px 0 #120E16;
 }
 
-.neon-glow-cyan {
-  box-shadow: 0 0 20px rgba(0, 240, 255, 0.35);
+.arcade-btn-primary {
+  background: #7C3AED;
+  color: #FFFFFF;
+  border: 2px solid #120E16;
+  box-shadow: 3px 3px 0 #120E16;
+  font-family: 'Fredoka', cursive;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
 }
 
-.neon-glow-gold {
-  box-shadow: 0 0 20px rgba(229, 169, 59, 0.35);
+.arcade-btn-primary:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #120E16;
+  background: #6D28D9;
+}
+
+.arcade-btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #120E16;
+}
+
+.arcade-btn-mint {
+  background: #00E5A3;
+  color: #120E16;
+  border: 2px solid #120E16;
+  box-shadow: 3px 3px 0 #120E16;
+  font-family: 'Fredoka', cursive;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+}
+
+.arcade-btn-mint:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 4px 4px 0 #120E16;
+  background: #10B981;
+}
+
+.arcade-btn-mint:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 #120E16;
+}
+
+.arcade-btn-ghost {
+  background: #F4F0FF;
+  color: #120E16;
+  border: 2px solid #120E16;
+  font-family: 'Courier Prime', monospace;
+  font-weight: 700;
+  transition: all 0.15s ease;
+}
+
+.arcade-btn-ghost:hover {
+  background: #FFFFFF;
+  box-shadow: 2px 2px 0 #120E16;
 }

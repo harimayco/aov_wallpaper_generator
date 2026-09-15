@@ -13,18 +13,18 @@ export default function LayerControlsBar({
   if (!selectedLayer) return null;
 
   return (
-    <div className="flex items-center justify-between gap-2 px-3 py-2 bg-brand-card/90 border border-brand-border/80 backdrop-blur-md rounded-xl shadow-xl text-xs">
-      <div className="flex items-center gap-2 text-slate-300">
-        <Layers className="w-4 h-4 text-brand-cyan" />
-        <span className="font-medium truncate max-w-[120px]">
-          {selectedLayer.type === 'text' ? `Text: "${selectedLayer.text}"` : selectedLayer.name || 'Selected Layer'}
+    <div className="flex items-center justify-between gap-2 px-3 py-2 bg-[#1A1528] border-2 border-[#120E16] shadow-[3px_3px_0_#120E16] rounded-xl text-xs font-mono">
+      <div className="flex items-center gap-2 text-[#00E5A3]">
+        <Layers className="w-4 h-4 text-[#00E5A3]" />
+        <span className="font-bold truncate max-w-[120px]">
+          {selectedLayer.type === 'text' ? `Text: "${selectedLayer.text}"` : selectedLayer.name || 'Selected'}
         </span>
       </div>
 
       <div className="flex items-center gap-1">
         <button
           onClick={() => onFlipH(selectedLayer.id)}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-cyan-300 hover:bg-white/10 transition"
+          className="p-1.5 rounded-lg text-white hover:text-[#00E5A3] hover:bg-white/10 transition"
           title="Flip Horizontal"
         >
           <FlipHorizontal className="w-4 h-4" />
@@ -32,17 +32,17 @@ export default function LayerControlsBar({
 
         <button
           onClick={() => onFlipV(selectedLayer.id)}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-cyan-300 hover:bg-white/10 transition"
+          className="p-1.5 rounded-lg text-white hover:text-[#00E5A3] hover:bg-white/10 transition"
           title="Flip Vertical"
         >
           <FlipVertical className="w-4 h-4" />
         </button>
 
-        <div className="h-4 w-[1px] bg-brand-border/80 mx-1" />
+        <div className="h-4 w-[2px] bg-[#120E16] mx-1" />
 
         <button
           onClick={() => onMoveUp(selectedLayer.id, 'up')}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition"
+          className="p-1.5 rounded-lg text-white hover:bg-white/10 transition"
           title="Move Forward"
         >
           <ArrowUp className="w-4 h-4" />
@@ -50,17 +50,17 @@ export default function LayerControlsBar({
 
         <button
           onClick={() => onMoveDown(selectedLayer.id, 'down')}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-white/10 transition"
+          className="p-1.5 rounded-lg text-white hover:bg-white/10 transition"
           title="Move Backward"
         >
           <ArrowDown className="w-4 h-4" />
         </button>
 
-        <div className="h-4 w-[1px] bg-brand-border/80 mx-1" />
+        <div className="h-4 w-[2px] bg-[#120E16] mx-1" />
 
         <button
           onClick={() => onDuplicate(selectedLayer.id)}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-amber-300 hover:bg-white/10 transition"
+          className="p-1.5 rounded-lg text-amber-300 hover:bg-white/10 transition"
           title="Duplicate"
         >
           <Copy className="w-4 h-4" />

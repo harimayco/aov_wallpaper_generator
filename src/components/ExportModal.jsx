@@ -27,48 +27,47 @@ export default function ExportModal({ isOpen, onClose, stageRef, presetName }) {
       link.click();
       document.body.removeChild(link);
 
-      // Trigger confetti celebration
       confetti({
-        particleCount: 80,
-        spread: 70,
+        particleCount: 90,
+        spread: 80,
         origin: { y: 0.6 },
-        colors: ['#00f0ff', '#7000ff', '#ffb703', '#ffffff']
+        colors: ['#7C3AED', '#00E5A3', '#120E16', '#FFFFFF']
       });
 
       setDone(true);
       setTimeout(() => setDone(false), 3000);
     } catch (err) {
-      console.error('Failed to export canvas image:', err);
+      console.error('Failed to export image:', err);
     } finally {
       setDownloading(false);
     }
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-md animate-fade-in">
-      <div className="w-full max-w-md glass-panel rounded-2xl border border-cyan-500/40 p-6 shadow-2xl relative overflow-hidden">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute right-4 top-4 p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10 transition"
-        >
-          <X className="w-5 h-5" />
-        </button>
-
-        <div className="flex items-center gap-3 mb-4">
-          <div className="w-10 h-10 rounded-xl bg-cyan-500/10 border border-cyan-500/40 flex items-center justify-center text-cyan-400">
-            <Sparkles className="w-5 h-5" />
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-[#120E16]/80 backdrop-blur-sm animate-fade-in font-mono">
+      <div className="w-full max-w-md bg-white rounded-2xl border-2 border-[#120E16] shadow-[6px_6px_0_#120E16] overflow-hidden relative">
+        {/* Header Bar */}
+        <div className="bg-[#7C3AED] border-b-2 border-[#120E16] p-4 flex items-center justify-between text-white">
+          <div className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-[#00E5A3]" />
+            <h3 className="font-display text-xl uppercase tracking-wider">EXPORT HD WALLPAPER</h3>
           </div>
-          <div>
-            <h3 className="font-heading text-xl text-white tracking-wide">EXPORT HD WALLPAPER</h3>
-            <p className="text-xs text-slate-400">Preset: {presetName}</p>
-          </div>
+          <button
+            onClick={onClose}
+            className="p-1 rounded-lg hover:bg-white/20 transition text-white"
+          >
+            <X className="w-5 h-5" />
+          </button>
         </div>
 
-        <div className="space-y-4 my-6">
+        <div className="p-5 space-y-4">
+          <div className="bg-[#F4F0FF] p-3 rounded-xl border-2 border-[#120E16]">
+            <p className="text-xs text-[#5C526A] font-bold">Preset: <span className="text-[#120E16]">{presetName}</span></p>
+          </div>
+
           <div>
-            <label className="text-xs font-semibold text-slate-300 block mb-2">
-              Select Export Resolution & Quality:
+            <label className="text-xs font-bold text-[#120E16] block mb-2">
+              EXPORT RESOLUTION & QUALITY:
             </label>
             <div className="grid grid-cols-3 gap-2">
               {[
@@ -79,37 +78,37 @@ export default function ExportModal({ isOpen, onClose, stageRef, presetName }) {
                 <button
                   key={opt.ratio}
                   onClick={() => setPixelRatio(opt.ratio)}
-                  className={`p-3 rounded-xl border text-center transition flex flex-col items-center justify-center ${
+                  className={`p-2.5 rounded-xl border-2 border-[#120E16] text-center transition flex flex-col items-center justify-center ${
                     pixelRatio === opt.ratio
-                      ? 'bg-cyan-500/20 border-cyan-400 text-cyan-300 font-semibold shadow-lg shadow-cyan-500/10'
-                      : 'bg-brand-card/80 border-brand-border/80 text-slate-400 hover:text-white'
+                      ? 'bg-[#00E5A3] text-[#120E16] font-bold shadow-[2px_2px_0_#120E16]'
+                      : 'bg-[#F4F0FF] text-[#120E16]/70 hover:bg-white'
                   }`}
                 >
                   <span className="text-xs font-bold">{opt.label}</span>
-                  <span className="text-[10px] text-slate-400 mt-0.5">{opt.desc}</span>
+                  <span className="text-[10px] text-[#5C526A] mt-0.5">{opt.desc}</span>
                 </button>
               ))}
             </div>
           </div>
-        </div>
 
-        <button
-          onClick={handleDownload}
-          disabled={downloading}
-          className="w-full py-3 rounded-xl font-heading text-base text-black bg-gradient-to-r from-cyan-400 via-teal-300 to-emerald-400 hover:from-cyan-300 hover:to-emerald-300 font-bold shadow-lg shadow-cyan-500/30 transition-all flex items-center justify-center gap-2 transform active:scale-95 disabled:opacity-50"
-        >
-          {done ? (
-            <>
-              <CheckCircle2 className="w-5 h-5 text-emerald-950" />
-              <span>SAVED TO DEVICE!</span>
-            </>
-          ) : (
-            <>
-              <Download className="w-5 h-5" />
-              <span>{downloading ? 'GENERATING IMAGE...' : 'DOWNLOAD WALLPAPER'}</span>
-            </>
-          )}
-        </button>
+          <button
+            onClick={handleDownload}
+            disabled={downloading}
+            className="arcade-btn-primary w-full py-3 rounded-xl text-sm flex items-center justify-center gap-2 mt-2"
+          >
+            {done ? (
+              <>
+                <CheckCircle2 className="w-5 h-5 text-[#00E5A3]" />
+                <span>SAVED TO DEVICE!</span>
+              </>
+            ) : (
+              <>
+                <Download className="w-5 h-5" />
+                <span>{downloading ? 'GENERATING...' : 'DOWNLOAD WALLPAPER'}</span>
+              </>
+            )}
+          </button>
+        </div>
       </div>
     </div>
   );

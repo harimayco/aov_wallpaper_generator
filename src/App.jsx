@@ -5,10 +5,17 @@ import AssetBrowser from './components/AssetBrowser';
 import LayerControlsBar from './components/LayerControlsBar';
 import ExportModal from './components/ExportModal';
 import { useCanvasState } from './hooks/useCanvasState';
+import { Gamepad2, Image as ImageIcon, User, Award, Type, Upload, Eye } from 'lucide-react';
 
 export default function App() {
   const stageRef = useRef();
   const [isExportOpen, setIsExportOpen] = useState(false);
+
+  // Asset Browser active tab
+  const [activeTab, setActiveTab] = useState('backgrounds');
+
+  // Mobile View Toggle: 'canvas' | 'asset'
+  const [mobileActiveView, setMobileActiveView] = useState('canvas');
 
   const {
     presetKey,
@@ -33,8 +40,18 @@ export default function App() {
 
   const selectedLayer = layers.find((l) => l.id === selectedId);
 
+  // Mobile tab select handler
+  const handleMobileNavTab = (tab) => {
+    if (tab === 'canvas') {
+      setMobileActiveView('canvas');
+    } else {
+      setActiveTab(tab);
+      setMobileActiveView('asset');
+    }
+  };
+
   return (
-    <div className="min-h-screen flex flex-col bg-[#050814] text-slate-100 font-sans selection:bg-cyan-500 selection:text-black">
+    <div className="min-h-screen flex flex-col bg-[#F4F0FF] text-[#120E16] font-mono selection:bg-[#00E5A3] selection:text-[#120E16] pb-16 lg:pb-0">
       {/* Header */}
       <Navbar
         presetKey={presetKey}
@@ -49,8 +66,12 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-        {/* Left Column: Canvas Studio */}
-        <section className="lg:col-span-7 xl:col-span-7 flex flex-col h-[65vh] lg:h-[calc(100vh-6rem)] relative">
+        {/* Left Column: Canvas Studio (Always visible on Desktop; Toggleable on Mobile) */}
+        <section
+          className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[70vh] lg:h-[calc(100vh-6rem)] relative ${
+            mobileActiveView === 'canvas' ? 'block' : 'hidden lg:flex'
+          }`}
+        >
           <div className="flex-1 w-full h-full relative">
             <CanvasStudio
               stageRef={stageRef}
@@ -62,7 +83,7 @@ export default function App() {
             />
           </div>
 
-          {/* Floating Selected Layer Toolbar */}
+          {/* Selected Layer Toolbar */}
           {selectedLayer && (
             <div className="mt-3">
               <LayerControlsBar
@@ -78,11 +99,99 @@ export default function App() {
           )}
         </section>
 
-        {/* Right Column: Asset Selector Panel */}
-        <section className="lg:col-span-5 xl:col-span-5 h-[500px] lg:h-[calc(100vh-6rem)]">
-          <AssetBrowser onAddLayer={addLayer} />
+        {/* Right Column: Asset Selector Panel (Always visible on Desktop; Toggleable on Mobile) */}
+        <section
+          className={`lg:col-span-5 xl:col-span-5 h-[calc(100vh-8rem)] lg:h-[calc(100vh-6rem)] relative ${
+            mobileActiveView === 'asset' ? 'block' : 'hidden lg:block'
+          }`}
+        >
+          <AssetBrowser
+            onAddLayer={(layerData) => {
+              addLayer(layerData);
+              // Switch to canvas view on mobile for instant feedback
+              if (window.innerWidth < 1024) {
+                setMobileActiveView('canvas');
+              }
+            }}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+          />
+
+          {/* Floating Back to Canvas Button on Mobile */}
+          {mobileActiveView === 'asset' && (
+            <button
+              onClick={() => setMobileActiveView('canvas')}
+              className="lg:hidden fixed bottom-18 right-4 z-40 arcade-btn-mint px-4 py-2.5 rounded-full text-xs flex items-center gap-2 shadow-xl animate-bounce"
+            >
+              <Eye className="w-4 h-4" />
+              <span>VIEW CANVAS ({layers.length})</span>
+            </button>
+          )}
         </section>
       </main>
+
+      {/* Mobile Fixed Bottom Navigation Menu */}
+      <nav className="lg:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#1A1528] border-t-2 border-[#120E16] px-1 py-1.5 flex items-center justify-around shadow-[0_-4px_10px_rgba(0,0,0,0.4)]">
+        <button
+          onClick={() => handleMobileNavTab('canvas')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
+            mobileActiveView === 'canvas'
+              ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          <Gamepad2 className="w-4 h-4 mb-0.5" />
+          <span>Canvas</span>
+        </button>
+
+        <button
+          onClick={() => handleMobileNavTab('backgrounds')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
+            mobileActiveView === 'asset' && activeTab === 'backgrounds'
+              ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          <ImageIcon className="w-4 h-4 mb-0.5" />
+          <span>BG Wallpapers</span>
+        </button>
+
+        <button
+          onClick={() => handleMobileNavTab('skins')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
+            mobileActiveView === 'asset' && activeTab === 'skins'
+              ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          <User className="w-4 h-4 mb-0.5" />
+          <span>Skins</span>
+        </button>
+
+        <button
+          onClick={() => handleMobileNavTab('badges')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
+            mobileActiveView === 'asset' && activeTab === 'badges'
+              ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          <Award className="w-4 h-4 mb-0.5" />
+          <span>Badges</span>
+        </button>
+
+        <button
+          onClick={() => handleMobileNavTab('text')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
+            mobileActiveView === 'asset' && activeTab === 'text'
+              ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
+              : 'text-white/60 hover:text-white'
+          }`}
+        >
+          <Type className="w-4 h-4 mb-0.5" />
+          <span>Text</span>
+        </button>
+      </nav>
 
       {/* Export HD Modal */}
       <ExportModal
