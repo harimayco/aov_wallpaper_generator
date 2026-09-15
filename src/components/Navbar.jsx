@@ -20,10 +20,13 @@ export default function Navbar({
             <Gamepad2 className="w-5 h-5 text-[#00E5A3]" />
           </div>
           <div>
-            <h1 className="font-display uppercase text-2xl sm:text-3xl text-[#7C3AED] display-stroke tracking-wide leading-none">
-              AOV STUDIO
+            <h1 className="font-display uppercase text-xl sm:text-2xl font-bold tracking-wider leading-none flex items-center gap-1.5">
+              <span className="text-[#7C3AED] drop-shadow-[2px_2px_0_#120E16]">AOV</span>
+              <span className="bg-[#00E5A3] text-[#120E16] px-2 py-0.5 rounded-lg border-2 border-[#120E16] shadow-[2px_2px_0_#120E16] text-sm sm:text-base">
+                STUDIO
+              </span>
             </h1>
-            <p className="font-mono text-[11px] text-[#5C526A] font-bold tracking-tight">
+            <p className="font-mono text-[10px] sm:text-[11px] text-[#5C526A] font-bold tracking-tight mt-1">
               HD WALLPAPER GENERATOR
             </p>
           </div>

@@ -3,9 +3,10 @@ import Navbar from './components/Navbar';
 import CanvasStudio from './components/CanvasStudio';
 import AssetBrowser from './components/AssetBrowser';
 import LayerControlsBar from './components/LayerControlsBar';
+import LayersManager from './components/LayersManager';
 import ExportModal from './components/ExportModal';
 import { useCanvasState } from './hooks/useCanvasState';
-import { Gamepad2, Image as ImageIcon, User, Award, Type, Upload, Eye } from 'lucide-react';
+import { Gamepad2, Image as ImageIcon, User, Award, Type, Upload, Eye, Layers } from 'lucide-react';
 
 export default function App() {
   const stageRef = useRef();
@@ -14,7 +15,7 @@ export default function App() {
   // Asset Browser active tab
   const [activeTab, setActiveTab] = useState('backgrounds');
 
-  // Mobile View Toggle: 'canvas' | 'asset'
+  // Mobile View Toggle: 'canvas' | 'asset' | 'layers'
   const [mobileActiveView, setMobileActiveView] = useState('canvas');
 
   const {
@@ -40,12 +41,14 @@ export default function App() {
 
   const selectedLayer = layers.find((l) => l.id === selectedId);
 
-  // Mobile tab select handler
-  const handleMobileNavTab = (tab) => {
-    if (tab === 'canvas') {
+  // Mobile navigation tab handler
+  const handleMobileNavTab = (viewOrTab) => {
+    if (viewOrTab === 'canvas') {
       setMobileActiveView('canvas');
+    } else if (viewOrTab === 'layers') {
+      setMobileActiveView('layers');
     } else {
-      setActiveTab(tab);
+      setActiveTab(viewOrTab);
       setMobileActiveView('asset');
     }
   };
@@ -66,7 +69,7 @@ export default function App() {
 
       {/* Main Content Workspace */}
       <main className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-4 grid grid-cols-1 lg:grid-cols-12 gap-4 items-start">
-        {/* Left Column: Canvas Studio (Always visible on Desktop; Toggleable on Mobile) */}
+        {/* Left Column: Canvas Studio */}
         <section
           className={`lg:col-span-7 xl:col-span-7 flex flex-col h-[70vh] lg:h-[calc(100vh-6rem)] relative ${
             mobileActiveView === 'canvas' ? 'block' : 'hidden lg:flex'
@@ -83,7 +86,7 @@ export default function App() {
             />
           </div>
 
-          {/* Selected Layer Toolbar */}
+          {/* Selected Layer Action Toolbar */}
           {selectedLayer && (
             <div className="mt-3">
               <LayerControlsBar
@@ -93,32 +96,46 @@ export default function App() {
                 onFlipV={flipVertical}
                 onMoveUp={(id) => moveLayerOrder(id, 'up')}
                 onMoveDown={(id) => moveLayerOrder(id, 'down')}
+                onMoveTop={(id) => moveLayerOrder(id, 'top')}
+                onMoveBottom={(id) => moveLayerOrder(id, 'bottom')}
                 onDelete={deleteLayer}
               />
             </div>
           )}
         </section>
 
-        {/* Right Column: Asset Selector Panel (Always visible on Desktop; Toggleable on Mobile) */}
+        {/* Right Column: Asset Selector OR Layers Manager */}
         <section
           className={`lg:col-span-5 xl:col-span-5 h-[calc(100vh-8rem)] lg:h-[calc(100vh-6rem)] relative ${
-            mobileActiveView === 'asset' ? 'block' : 'hidden lg:block'
+            mobileActiveView !== 'canvas' ? 'block' : 'hidden lg:block'
           }`}
         >
-          <AssetBrowser
-            onAddLayer={(layerData) => {
-              addLayer(layerData);
-              // Switch to canvas view on mobile for instant feedback
-              if (window.innerWidth < 1024) {
-                setMobileActiveView('canvas');
-              }
-            }}
-            activeTab={activeTab}
-            setActiveTab={setActiveTab}
-          />
+          {mobileActiveView === 'layers' ? (
+            <LayersManager
+              layers={layers}
+              selectedId={selectedId}
+              setSelectedId={setSelectedId}
+              onDuplicate={duplicateLayer}
+              onFlipH={flipHorizontal}
+              onFlipV={flipVertical}
+              onMoveOrder={moveLayerOrder}
+              onDelete={deleteLayer}
+            />
+          ) : (
+            <AssetBrowser
+              onAddLayer={(layerData) => {
+                addLayer(layerData);
+                if (window.innerWidth < 1024) {
+                  setMobileActiveView('canvas');
+                }
+              }}
+              activeTab={activeTab}
+              setActiveTab={setActiveTab}
+            />
+          )}
 
           {/* Floating Back to Canvas Button on Mobile */}
-          {mobileActiveView === 'asset' && (
+          {mobileActiveView !== 'canvas' && (
             <button
               onClick={() => setMobileActiveView('canvas')}
               className="lg:hidden fixed bottom-18 right-4 z-40 arcade-btn-mint px-4 py-2.5 rounded-full text-xs flex items-center gap-2 shadow-xl animate-bounce"
@@ -153,7 +170,7 @@ export default function App() {
           }`}
         >
           <ImageIcon className="w-4 h-4 mb-0.5" />
-          <span>BG Wallpapers</span>
+          <span>Wallpapers</span>
         </button>
 
         <button
@@ -181,15 +198,20 @@ export default function App() {
         </button>
 
         <button
-          onClick={() => handleMobileNavTab('text')}
-          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition ${
-            mobileActiveView === 'asset' && activeTab === 'text'
+          onClick={() => handleMobileNavTab('layers')}
+          className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition relative ${
+            mobileActiveView === 'layers'
               ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
               : 'text-white/60 hover:text-white'
           }`}
         >
-          <Type className="w-4 h-4 mb-0.5" />
-          <span>Text</span>
+          <Layers className="w-4 h-4 mb-0.5" />
+          <span>Layers</span>
+          {layers.length > 0 && (
+            <span className="absolute top-0.5 right-2 w-3.5 h-3.5 bg-[#7C3AED] text-white text-[8px] font-bold rounded-full flex items-center justify-center border border-[#120E16]">
+              {layers.length}
+            </span>
+          )}
         </button>
       </nav>
 
