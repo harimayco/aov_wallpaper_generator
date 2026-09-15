@@ -14,11 +14,36 @@ export default function ExportModal({ isOpen, onClose, stageRef, presetName }) {
     setDownloading(true);
 
     try {
-      const dataUrl = stageRef.current.toDataURL({
+      const stage = stageRef.current;
+      
+      // Save current responsive preview scale
+      const oldScaleX = stage.scaleX();
+      const oldScaleY = stage.scaleY();
+      
+      // Hide selection Transformer during export so bounding box handles don't show in saved image
+      const transformer = stage.findOne('Transformer');
+      if (transformer) {
+        transformer.hide();
+      }
+
+      // Reset stage scale to 1:1 for full resolution output matching preset size
+      stage.scaleX(1);
+      stage.scaleY(1);
+      stage.draw();
+
+      const dataUrl = stage.toDataURL({
         pixelRatio: pixelRatio,
         mimeType: 'image/png',
         quality: 1
       });
+
+      // Restore responsive preview scale and show transformer
+      stage.scaleX(oldScaleX);
+      stage.scaleY(oldScaleY);
+      if (transformer) {
+        transformer.show();
+      }
+      stage.draw();
 
       const link = document.createElement('a');
       link.download = `AOV-Wallpaper-${Date.now()}.png`;
