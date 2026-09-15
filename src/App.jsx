@@ -125,8 +125,15 @@ export default function App() {
             <AssetBrowser
               onAddLayer={(layerData) => {
                 addLayer(layerData);
-                if (window.innerWidth < 1024) {
-                  setMobileActiveView('canvas');
+                if (layerData?.subType === 'bg') {
+                  setActiveTab('skins');
+                  if (window.innerWidth < 1024) {
+                    setMobileActiveView('asset');
+                  }
+                } else {
+                  if (window.innerWidth < 1024) {
+                    setMobileActiveView('canvas');
+                  }
                 }
               }}
               activeTab={activeTab}
