@@ -102,11 +102,11 @@ export default function Navbar({
           </button>
           <button
             onClick={onExport}
-            className="arcade-btn-mint px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs flex items-center gap-1.5"
+            className="arcade-btn-mint px-2.5 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs flex items-center gap-1.5 shrink-0"
           >
             <Download className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
             <span className="hidden sm:inline">EXPORT HD</span>
-            <span className="sm:hidden text-[10px]">EXPORT</span>
+            <span className="sm:hidden text-[11px] font-bold">HD</span>
           </button>
         </div>
       </div>
