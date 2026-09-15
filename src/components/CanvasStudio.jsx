@@ -187,10 +187,88 @@ export default function CanvasStudio({
     }
   }, [selectedId, layers]);
 
+  const lastDistRef = useRef(0);
+  const lastAngleRef = useRef(0);
+  const isPinchingRef = useRef(false);
+
+  const getDistance = (p1, p2) => {
+    return Math.hypot(p2.x - p1.x, p2.y - p1.y);
+  };
+
+  const getAngle = (p1, p2) => {
+    return Math.atan2(p2.y - p1.y, p2.x - p1.x) * (180 / Math.PI);
+  };
+
   const handleStageClick = (e) => {
     if (e.target === e.target.getStage()) {
       setSelectedId(null);
     }
+  };
+
+  const handleTouchStart = (e) => {
+    handleStageClick(e);
+    if (e.evt && e.evt.touches && e.evt.touches.length === 2) {
+      const touch1 = e.evt.touches[0];
+      const touch2 = e.evt.touches[1];
+      const p1 = { x: touch1.clientX, y: touch1.clientY };
+      const p2 = { x: touch2.clientX, y: touch2.clientY };
+      lastDistRef.current = getDistance(p1, p2);
+      lastAngleRef.current = getAngle(p1, p2);
+      isPinchingRef.current = true;
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    if (!e.evt || !e.evt.touches || e.evt.touches.length !== 2) {
+      isPinchingRef.current = false;
+      return;
+    }
+
+    if (selectedId) {
+      const selectedLayer = layers.find((l) => l.id === selectedId);
+      if (!selectedLayer) return;
+
+      const touch1 = e.evt.touches[0];
+      const touch2 = e.evt.touches[1];
+      const p1 = { x: touch1.clientX, y: touch1.clientY };
+      const p2 = { x: touch2.clientX, y: touch2.clientY };
+
+      const dist = getDistance(p1, p2);
+      const angle = getAngle(p1, p2);
+
+      if (!isPinchingRef.current || lastDistRef.current === 0) {
+        isPinchingRef.current = true;
+        lastDistRef.current = dist;
+        lastAngleRef.current = angle;
+        return;
+      }
+
+      const distFactor = dist / lastDistRef.current;
+      const angleDiff = angle - lastAngleRef.current;
+
+      const currentScaleX = selectedLayer.scaleX || 1;
+      const currentScaleY = selectedLayer.scaleY || 1;
+      const currentRotation = selectedLayer.rotation || 0;
+
+      const newScaleX = Math.max(0.05, Math.min(20, currentScaleX * distFactor));
+      const newScaleY = Math.max(0.05, Math.min(20, currentScaleY * distFactor));
+      const newRotation = (currentRotation + angleDiff) % 360;
+
+      updateLayerProps(selectedId, {
+        scaleX: newScaleX,
+        scaleY: newScaleY,
+        rotation: newRotation,
+      });
+
+      lastDistRef.current = dist;
+      lastAngleRef.current = angle;
+    }
+  };
+
+  const handleTouchEnd = () => {
+    isPinchingRef.current = false;
+    lastDistRef.current = 0;
+    lastAngleRef.current = 0;
   };
 
   const stageWidth = dimensions.width * scale;
@@ -199,7 +277,7 @@ export default function CanvasStudio({
   return (
     <div
       ref={containerRef}
-      className="w-full h-full flex items-center justify-center p-3 sm:p-4 arcade-panel-dark rounded-2xl relative overflow-hidden"
+      className="w-full h-full flex items-center justify-center p-3 sm:p-4 arcade-panel-dark rounded-2xl relative overflow-hidden touch-none"
     >
       {/* Dynamic Dots Background Pattern */}
       <div 
@@ -225,7 +303,9 @@ export default function CanvasStudio({
           scaleX={scale}
           scaleY={scale}
           onMouseDown={handleStageClick}
-          onTouchStart={handleStageClick}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
           className="bg-black"
         >
           <Layer>
