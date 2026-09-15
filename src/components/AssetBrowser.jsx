@@ -1,7 +1,8 @@
 import React, { useState, useMemo } from 'react';
-import { Search, Shield, Swords, Wand2, Target, HeartHandshake, Skull, Image as ImageIcon, Type, Award, Upload, Plus, User } from 'lucide-react';
+import { Search, Shield, Swords, Wand2, Target, HeartHandshake, Skull, Image as ImageIcon, Type, Award, Upload, Plus, User, Layers } from 'lucide-react';
 import { HEROES_DATA } from '../data/heroes';
 import { FONTS_LIST, CUSTOM_UTILS } from '../data/utils';
+import LayersManager from './LayersManager';
 
 const ROLE_TAGS = [
   { id: 'all', label: 'All', icon: Shield },
@@ -13,7 +14,19 @@ const ROLE_TAGS = [
   { id: 'support', label: 'Support', icon: HeartHandshake },
 ];
 
-export default function AssetBrowser({ onAddLayer, activeTab, setActiveTab }) {
+export default function AssetBrowser({
+  onAddLayer,
+  activeTab,
+  setActiveTab,
+  layers = [],
+  selectedId,
+  setSelectedId,
+  onDuplicate,
+  onFlipH,
+  onFlipV,
+  onMoveOrder,
+  onDelete,
+}) {
   const [selectedRole, setSelectedRole] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
@@ -170,6 +183,22 @@ export default function AssetBrowser({ onAddLayer, activeTab, setActiveTab }) {
         >
           <Upload className="w-3.5 h-3.5" />
           <span>Upload</span>
+        </button>
+        <button
+          onClick={() => setActiveTab('layers')}
+          className={`flex-1 flex items-center justify-center gap-1 py-2 px-2 rounded-xl text-xs font-mono font-bold transition relative ${
+            activeTab === 'layers'
+              ? 'bg-[#7C3AED] text-white border-2 border-[#120E16] shadow-[2px_2px_0_#120E16]'
+              : 'text-white/70 hover:text-white hover:bg-white/5'
+          }`}
+        >
+          <Layers className="w-3.5 h-3.5 text-[#00E5A3]" />
+          <span>Layers</span>
+          {layers.length > 0 && (
+            <span className="ml-1 px-1.5 py-0.2 bg-[#00E5A3] text-[#120E16] text-[10px] font-bold rounded-full border border-[#120E16]">
+              {layers.length}
+            </span>
+          )}
         </button>
       </div>
 
@@ -541,6 +570,22 @@ export default function AssetBrowser({ onAddLayer, activeTab, setActiveTab }) {
                 />
               </label>
             </div>
+          </div>
+        )}
+
+        {/* TAB 6: LAYERS MANAGER */}
+        {activeTab === 'layers' && (
+          <div className="h-full -m-3 sm:-m-4">
+            <LayersManager
+              layers={layers}
+              selectedId={selectedId}
+              setSelectedId={setSelectedId}
+              onDuplicate={onDuplicate}
+              onFlipH={onFlipH}
+              onFlipV={onFlipV}
+              onMoveOrder={onMoveOrder}
+              onDelete={onDelete}
+            />
           </div>
         )}
       </div>

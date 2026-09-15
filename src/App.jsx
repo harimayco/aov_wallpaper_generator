@@ -110,36 +110,31 @@ export default function App() {
             mobileActiveView !== 'canvas' ? 'block' : 'hidden lg:block'
           }`}
         >
-          {mobileActiveView === 'layers' ? (
-            <LayersManager
-              layers={layers}
-              selectedId={selectedId}
-              setSelectedId={setSelectedId}
-              onDuplicate={duplicateLayer}
-              onFlipH={flipHorizontal}
-              onFlipV={flipVertical}
-              onMoveOrder={moveLayerOrder}
-              onDelete={deleteLayer}
-            />
-          ) : (
-            <AssetBrowser
-              onAddLayer={(layerData) => {
-                addLayer(layerData);
-                if (layerData?.subType === 'bg') {
-                  setActiveTab('skins');
-                  if (window.innerWidth < 1024) {
-                    setMobileActiveView('asset');
-                  }
-                } else {
-                  if (window.innerWidth < 1024) {
-                    setMobileActiveView('canvas');
-                  }
+          <AssetBrowser
+            onAddLayer={(layerData) => {
+              addLayer(layerData);
+              if (layerData?.subType === 'bg') {
+                setActiveTab('skins');
+                if (window.innerWidth < 1024) {
+                  setMobileActiveView('asset');
                 }
-              }}
-              activeTab={activeTab}
-              setActiveTab={setActiveTab}
-            />
-          )}
+              } else {
+                if (window.innerWidth < 1024) {
+                  setMobileActiveView('canvas');
+                }
+              }
+            }}
+            activeTab={activeTab}
+            setActiveTab={setActiveTab}
+            layers={layers}
+            selectedId={selectedId}
+            setSelectedId={setSelectedId}
+            onDuplicate={duplicateLayer}
+            onFlipH={flipHorizontal}
+            onFlipV={flipVertical}
+            onMoveOrder={moveLayerOrder}
+            onDelete={deleteLayer}
+          />
 
           {/* Floating Back to Canvas Button on Mobile */}
           {mobileActiveView !== 'canvas' && (
@@ -207,7 +202,7 @@ export default function App() {
         <button
           onClick={() => handleMobileNavTab('layers')}
           className={`flex flex-col items-center justify-center flex-1 py-1 px-1 rounded-xl text-[10px] font-bold transition relative ${
-            mobileActiveView === 'layers'
+            mobileActiveView === 'asset' && activeTab === 'layers'
               ? 'text-[#00E5A3] bg-[#211B33] border border-[#00E5A3]'
               : 'text-white/60 hover:text-white'
           }`}
